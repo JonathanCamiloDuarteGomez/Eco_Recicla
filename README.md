@@ -25,9 +25,10 @@ Posteriormente, se llevó a cabo una planificación de sprint y se creó el back
 - 2.Entrar en ella
 - 3.Dar clic derecho y ir a Mostrar Mas Opciones.
 - 4.Abri Git Bash
-- 5.Escribir git init
-- 6.Si su rama local es diferente de main escriba el siguiente comando: git branch -m main
-- 5.Insertar el comando git clone https://github.com/JonathanCamiloDuarteGomez/Eco_Recicla.git
+- 5.Si su rama local es diferente de main escriba el siguiente comando: git branch -m main
+- 6.Insertar el comando git clone https://github.com/JonathanCamiloDuarteGomez/Eco_Recicla.git
+- 7.Ingrese a la nueva carpeta que se genero.
+- 8.Dentro de esta carpeta abra de nuevo el **bash**
 - 6.realice un pull al gitHub para comprobar que todo esta en orden, ejecute el siguiente comando: git pull origin main --allow-unrelated-histories
 - 7.Crear tu propia rama local: git checkout -b <tu nombre>
 ## Crear tu rama en el repositorio en la web GITHUB
