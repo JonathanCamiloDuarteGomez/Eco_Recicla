@@ -1,19 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:background="@drawable/background"
     tools:context=".MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+ <!-- RecyclerView for displaying the list of versions -->
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+ <androidx.recyclerview.widget.RecyclerView
+     android:id="@+id/recyclerView"
+     android:layout_width="wrap_content"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/header_title1_txt"
+     android:layout_alignParentStart="true"
+     android:layout_alignParentEnd="true"
+
+     android:layout_alignParentBottom="true"
+     android:layout_marginStart="15dp"
+     android:layout_marginTop="30dp"
+     android:layout_marginEnd="15dp"
+     android:layout_marginBottom="30dp"
+     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+ <TextView
+     android:id="@+id/header_title_txt"
+     style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_marginLeft="15dp"
+     android:layout_marginTop="10sp"
+     android:layout_marginRight="15dp"
+     android:background="#8BC34A"
+     android:fontFamily="monospace"
+     android:padding="5dp"
+     android:text="EcoRecicla"
+     android:textAlignment="center"
+     android:textColor="@color/black"
+     android:textSize="20sp"
+     android:textStyle="bold" />
+
+ <TextView
+     android:id="@+id/header_title1_txt"
+     style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content"
+     android:layout_below="@+id/header_title_txt"
+     android:layout_marginTop="30dp"
+     android:background="#8BC34A"
+     android:fontFamily="monospace"
+     android:padding="5dp"
+     android:layout_marginLeft="15dp"
+     android:layout_marginRight="15dp"
+     android:text="Historial de ventas"
+     android:textAlignment="center"
+     android:textColor="@color/black"
+     android:textSize="18sp"
+     android:textStyle="bold" />
+
+ <!-- Placeholder for additional layout for list items -->
+ <!-- You can add other UI elements here if needed -->
+
+</RelativeLayout>
