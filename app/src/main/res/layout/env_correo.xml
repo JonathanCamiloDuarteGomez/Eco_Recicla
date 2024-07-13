@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/frontapp"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/mensa_correo"
+        android:layout_width="316dp"
+        android:layout_height="43dp"
+        android:layout_marginTop="100dp"
+        android:layout_centerHorizontal="true"
+        android:text="Por favor revise su correo para reiniciar su contraseña"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+    <Button
+        android:id="@+id/vol_inicio"
+        android:layout_width="316dp"
+        android:layout_height="43dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="400dp"
+        android:text="Volver al Inicio"
+        android:textAlignment="center"
+        android:backgroundTint="#009E0F" />
+
+</RelativeLayout>
