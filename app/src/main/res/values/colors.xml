@@ -1,5 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
+    <color name="black">#FF000000</color> <!-- Negro -->
+    <color name="white">#FFFFFFFF</color> <!-- Blanco -->
+    <color name="red">#FFFF0000</color> <!-- Rojo -->
+    <color name="green">#FF00FF00</color> <!-- Verde -->
+    <color name="blue">#FF0000FF</color> <!-- Azul -->
+    <color name="yellow">#FFFFFF00</color> <!-- Amarillo -->
+    <color name="orange">#FFFFA500</color> <!-- Naranja -->
+    <color name="purple">#FF800080</color> <!-- Morado -->
+    <color name="cyan">#FF00FFFF</color> <!-- Cian -->
+    <color name="magenta">#FFFF00FF</color> <!-- Magenta -->
+    <color name="gray">#FF808080</color> <!-- Gris -->
 </resources>
