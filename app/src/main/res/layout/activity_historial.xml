@@ -8,7 +8,7 @@
     android:orientation="vertical"
     android:padding="8dp"
     android:background="@drawable/background"
-    tools:context=".MainActivity">
+    tools:context=".HistorialActivity">
 
  <!-- RecyclerView for displaying the list of versions -->
 

@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class HistorialActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private List<Version> versionList;
     private Button btnIrAmenu_Historial;
@@ -21,7 +20,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_historial);
 
         recyclerView = findViewById(R.id.recyclerView);
         btnIrAmenu_Historial = findViewById(R.id.btnIrAmenu_Historial);
@@ -32,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         btnIrAmenu_Historial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(MainActivity.this, MenuPrincipal.class);
+                Intent next = new Intent(HistorialActivity.this, MenuPrincipal.class);
                 startActivity(next);
             }
         });

@@ -45,7 +45,7 @@ public class DetalleFactura extends AppCompatActivity {
 
         irHistorial.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
-                Intent next = new Intent(DetalleFactura.this, MainActivity.class);
+                Intent next = new Intent(DetalleFactura.this, HistorialActivity.class);
                 startActivity(next);
             }
         });

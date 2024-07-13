@@ -26,7 +26,7 @@
             android:name=".DetalleFactura"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".HistorialActivity"
             android:exported="false">
 
         </activity>
