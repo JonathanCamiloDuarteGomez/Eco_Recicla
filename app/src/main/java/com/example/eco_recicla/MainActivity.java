@@ -13,6 +13,7 @@ public class MainActivity extends AppCompatActivity {
     //variables
     Button btnInicioSesion;
     Button btnRegistrar;
+    Button btnOlvContra;
 
 
     @Override
@@ -22,11 +23,14 @@ public class MainActivity extends AppCompatActivity {
         //asignacion de variables
         btnInicioSesion = findViewById(R.id.btnInicia_sesion);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+        btnOlvContra = findViewById(R.id.btnOlvContra);
 
         //llamado de funciones
 
         cambioDePantalla(btnInicioSesion, MenuPrincipal.class); //en la siguiente funcion se ingresa el bton y la clase hacia donde se va
         cambioDePantalla(btnRegistrar, CrearCuentaActivity.class);
+        cambioDePantalla(btnOlvContra, RecuperarContrasena.class);
+
 
     }
     private void cambioDePantalla(Button nombreBtn, final Class<?> clase) {
