@@ -65,4 +65,17 @@
  <!-- Placeholder for additional layout for list items -->
  <!-- You can add other UI elements here if needed -->
 
+ <Button
+     android:id="@+id/btnIrAmenu_Historial"
+     android:layout_width="118dp"
+     android:layout_height="wrap_content"
+     android:layout_alignParentStart="true"
+     android:layout_alignParentEnd="true"
+     android:layout_alignParentBottom="true"
+     android:layout_marginTop="-100dp"
+     android:layout_marginBottom="30dp"
+     android:background="#00F0EEF4"
+     android:drawableLeft="@drawable/leave"
+     tools:ignore="SpeakableTextPresentCheck" />
+
 </RelativeLayout>

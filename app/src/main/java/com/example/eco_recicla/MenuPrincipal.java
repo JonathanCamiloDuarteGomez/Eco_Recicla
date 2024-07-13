@@ -30,7 +30,7 @@ public class MenuPrincipal extends AppCompatActivity {
         cambioDePantalla(btnIncentivosRecompensas, MainActivity.class);
         cambioDePantalla(btnEstadisticasDeReciclaje, MainActivity.class);
         cambioDePantalla(btnDatosPersonales, MainActivity.class);
-        cambioDePantalla(btnSalir, MainActivity.class);
+        cambioDePantalla(btnSalir, MainActivity.class);//cambiar a login
         //no olvidar reemplazar la clase pa donde se dirije, no son MainActivity
     }
 
