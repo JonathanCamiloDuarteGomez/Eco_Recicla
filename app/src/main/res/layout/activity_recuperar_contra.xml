@@ -4,27 +4,29 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/frontapp"
-    tools:context=".MainActivity">
+    android:background="@drawable/background2"
+    tools:context=".RecuperarContrasena">
 
-    <TextView
-        android:id="@+id/mensa_correo"
+    <EditText
+        android:id="@+id/EditTextCorreo"
         android:layout_width="316dp"
         android:layout_height="43dp"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="290dp"
         android:layout_centerHorizontal="true"
-        android:text="Por favor revise su correo para reiniciar su contraseña"
-        android:textAlignment="center"
-        android:textColor="#FFFFFF" />
+        android:background="@android:color/white"
+        android:hint="Correo Electronico"
+        android:inputType="textEmailAddress"
+        android:textAlignment="center" />
 
     <Button
-        android:id="@+id/vol_inicio"
+        android:id="@+id/rec_contrasena"
         android:layout_width="316dp"
         android:layout_height="43dp"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="400dp"
-        android:text="Volver al Inicio"
+        android:text="Recuperar Contraseña"
         android:textAlignment="center"
         android:backgroundTint="#009E0F" />
+
 
 </RelativeLayout>

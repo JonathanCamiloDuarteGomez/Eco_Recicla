@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/background"
+    tools:context=".DetalleFactura">
+    <TextView
+        android:id="@+id/header_title_txt"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="20sp"
+        android:layout_marginRight="15dp"
+        android:background="#8BC34A"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="EcoRecicla"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/numFactura_txt"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title_txt"
+        android:layout_marginTop="30dp"
+        android:background="#8BC34A"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        android:text="@string/header_numFactura_Dinamico"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="match_parent"
+        android:layout_height="478dp"
+        android:layout_below="@+id/numFactura_txt"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginEnd="15dp"
+        android:layout_marginBottom="130dp">
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/tablaFactura"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="horizontal">
+
+
+            </TableLayout>
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnIrAVentanaHistorial"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollView"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-100dp"
+        android:layout_marginBottom="30dp"
+        android:background="#00F0EEF4"
+        android:drawableLeft="@drawable/leave"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+</RelativeLayout>

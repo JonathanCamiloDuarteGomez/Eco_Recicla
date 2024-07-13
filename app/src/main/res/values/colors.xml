@@ -1,7 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="black">#FF000000</color> <!-- Negro -->
-    <color name="white">#FFFFFFFF</color> <!-- Blanco -->
+
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="gris">#a9a9a9</color>
+    <color name="colorPrimarylight">#8BC34A</color>
+
+
     <color name="red">#FFFF0000</color> <!-- Rojo -->
     <color name="green">#FF00FF00</color> <!-- Verde -->
     <color name="blue">#FF0000FF</color> <!-- Azul -->
@@ -10,5 +17,7 @@
     <color name="purple">#FF800080</color> <!-- Morado -->
     <color name="cyan">#FF00FFFF</color> <!-- Cian -->
     <color name="magenta">#FFFF00FF</color> <!-- Magenta -->
-    <color name="gray">#FF808080</color> <!-- Gris -->
+
 </resources>
+
+
