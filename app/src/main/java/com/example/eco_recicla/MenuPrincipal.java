@@ -17,14 +17,14 @@ public class MenuPrincipal extends AppCompatActivity {
         ImageButton btnGestionDeRe = findViewById(R.id.buttonGestionDeRe);
         ImageButton btnIncentivosRecompensas = findViewById(R.id.buttonIncentivosRecompensas);
         ImageButton btnEstadisticasDeReciclaje = findViewById(R.id.buttonEstadisticasDeReciclaje);
-        ImageButton btnDatosPersonales = findViewById(R.id.buttonDatosPersonales);
+        ImageButton btnDatosPersonales = findViewById(R.id.buttonInformacionDeUsuario);
         ImageButton btnSalir = findViewById(R.id.floatingActionButton2);
 
         //en la siguiente funcion se ingresa el bton y la clase hacia donde se va
         cambioDePantalla(btnGestionDeRe, HistorialActivity.class);
-        cambioDePantalla(btnIncentivosRecompensas, Activity_Premios.class);
+        cambioDePantalla(btnIncentivosRecompensas, Premios.class);
         cambioDePantalla(btnEstadisticasDeReciclaje, HistorialActivity.class);
-        cambioDePantalla(btnDatosPersonales, HistorialActivity.class);
+        cambioDePantalla(btnDatosPersonales, MenuInformacionUsuario.class);
         cambioDePantalla(btnSalir, MainActivity.class);//cambiar a login
         //no olvidar reemplazar la clase pa donde se dirije, no son HistorialActivity
     }

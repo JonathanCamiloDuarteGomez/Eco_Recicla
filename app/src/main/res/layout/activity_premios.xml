@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/background"
     android:contentDescription="Inicio"
-    tools:context=".Activity_Premios">
+    tools:context=".Premios">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,7 +36,6 @@
                     app:srcCompat="@drawable/home" />
 
                 <TextView
-                    android:id="@+id/textView6"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="16"
@@ -69,6 +68,7 @@
             android:layout_height="497dp"
             android:orientation="vertical"
             android:visibility="visible"
+            tools:visibility="visible"
             app:layout_constraintBottom_toTopOf="@+id/Button_canjear"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -109,7 +109,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
-                    android:text="smartwatch"
+                    android:text="Smartwatch \n10000 Coins"
                     android:textAlignment="center"
                     android:textColor="@color/black"
                     android:textSize="24sp"
