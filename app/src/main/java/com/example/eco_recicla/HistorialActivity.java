@@ -31,7 +31,7 @@ public class HistorialActivity extends AppCompatActivity {
         btnIrAmenu_Historial.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(HistorialActivity.this, MenuPrincipal.class);
+                Intent next = new Intent(HistorialActivity.this, MenuInformacionUsuario.class);
                 startActivity(next);
             }
         });

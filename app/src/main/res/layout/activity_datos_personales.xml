@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".Datos_Personales">
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="2dp"
+        tools:ignore="MissingConstraints">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/imageButtonHome"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:layout_weight="1"
+                android:background="@drawable/home"
+                android:contentDescription="Inicio"
+                android:hapticFeedbackEnabled="false"
+                tools:ignore="TouchTargetSizeCheck" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="16"
+                android:text="" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/mensa_crear_corr"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="40dp"
+        android:text="Datos Personales"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mensa_cuenta"
+        android:layout_width="311dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/mensa_crear_corr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Actualización de datos personales"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="14dp"
+        android:textStyle="bold"
+        tools:ignore="TextSizeCheck" />
+
+
+
+        <LinearLayout
+            android:id="@+id/tabla_datos"
+            android:layout_marginTop="15dp"
+            android:layout_width="340dp"
+            android:layout_height="520dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@+id/mensa_cuenta"
+            >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                >
+                <TextView
+                    android:id="@+id/TextViewTipoDeIdentificación"
+                    android:layout_width="132dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="4dp"
+                    android:text="CC : "
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/TextViewNumIdentificacion"
+                    android:layout_width="172dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="100012457"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                >
+                <TextView
+                    android:layout_width="132dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Nombres : "
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/TextViewNombre"
+                    android:layout_width="172dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="Pepito"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                >
+                <TextView
+                    android:layout_width="132dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Apellidos : "
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/TextViewApellido"
+                    android:layout_width="172dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text="Perez"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="12dp"
+                >
+                <TextView
+                    android:layout_width="132dp"
+                    android:layout_height="48dp"
+                    android:layout_marginRight="4dp"
+                    android:text="Edad : "
+                    android:gravity="center"
+                    android:background="@android:color/white"
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/TextViewEdad"
+                    android:layout_width="172dp"
+                    android:layout_height="48dp"
+                    android:background="@android:color/white"
+                    android:gravity="center"
+                    android:paddingLeft="4dp"
+                    android:text=" 25 "
+                    android:textColor="@android:color/black"
+                    android:textSize="16sp" />
+
+            </LinearLayout>
+
+            <EditText
+                android:id="@+id/EditTextEmail1"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:textAlignment="center"
+                android:text="PepitoPerez@gmail.com"
+                />
+
+            <EditText
+                android:id="@+id/EditTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:text="31384455"
+                android:textAlignment="center"
+                android:inputType="phone"
+                />
+
+            <EditText
+                android:id="@+id/EditTextAdress1"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:text="Calle 85 #25-36 sur"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/EditTextAdress2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Dirección Alternativa*"
+                android:textAlignment="center" />
+        </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/btnActualizar"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/tabla_datos"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-10dp"
+        android:backgroundTint="#009E0F"
+        android:text="Actualizar Información"
+        android:textAlignment="center" />
+    <Button
+        android:id="@+id/btnIrAmenuInformacionUsuario"
+        android:layout_width="40dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnActualizar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="-20dp"
+        android:background="#00F0EEF4"
+        android:drawableLeft="@drawable/leave"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+</RelativeLayout>
