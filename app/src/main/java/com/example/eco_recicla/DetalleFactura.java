@@ -34,7 +34,7 @@ public class DetalleFactura extends AppCompatActivity {
         numFactura = findViewById(R.id.numFactura_txt);
         numFactura.setText(nFactura);
 
-        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","Coins","Total Coins","Total"};
+        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
         tablaFactura=(TableLayout) findViewById(R.id.tablaFactura);
         rows = new ArrayList<>();
 

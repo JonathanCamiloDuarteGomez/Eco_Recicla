@@ -29,7 +29,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="#008BC34A"
+        android:background="@color/colorPrimarylight"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Objetos a Vender"
@@ -47,7 +47,7 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="15dp"
         android:layout_marginRight="15dp"
-        android:background="#0064DD17"
+        android:background="@color/colorPrimarylight"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Datos Personales"
@@ -65,12 +65,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="CC :100012457"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
@@ -82,12 +83,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Nombre completo: Andres Pepito Perez Perez"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <TextView
@@ -99,12 +101,13 @@
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
         android:fontFamily="monospace"
         android:padding="5dp"
         android:text="Teléfono : 31384455"
         android:textAlignment="center"
-        android:textColor="@color/black"
-        android:textSize="12sp"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
         android:textStyle="bold" />
 
     <Spinner
@@ -112,9 +115,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/TextViewTelefonoCelular"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginRight="15dp"
         android:background="@color/gris"
         android:minHeight="48dp"
         android:spinnerMode="dialog" />
@@ -126,30 +129,30 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/spinnerSeleccionDeDireccion"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="3dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="15dp"
         android:fontFamily="monospace"
         android:padding="1dp"
         android:text="Agregar Objeto"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
-        android:layout_width="330dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/lbl1"
-        android:layout_marginLeft="45dp"
+        android:layout_marginLeft="15dp"
         android:layout_marginTop="5dp"
-        android:layout_marginRight="45dp"
+        android:layout_marginRight="15dp"
         android:background="@color/gris"
         android:gravity="center"
         android:orientation="horizontal">
 
         <Spinner
-            android:id="@+id/SpinnerGrupo"
+            android:id="@+id/spinnerGrupo1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -158,7 +161,7 @@
             />
 
         <Spinner
-            android:id="@+id/SpinnerTipo"
+            android:id="@+id/spinnerTipo1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
@@ -194,14 +197,14 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/linearLayout"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="2dp"
+        android:layout_marginTop="4dp"
         android:layout_marginRight="15dp"
         android:fontFamily="monospace"
         android:padding="1dp"
         android:text="Lista de objetos agregados"
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="10sp"
+        android:textSize="12sp"
         android:textStyle="bold" />
 
     <HorizontalScrollView
@@ -211,9 +214,9 @@
         android:layout_weight="1"
         android:fillViewport="true"
         android:layout_marginBottom="45dp"
-        android:layout_marginLeft="35dp"
+        android:layout_marginLeft="25dp"
         android:layout_marginTop="-2dp"
-        android:layout_marginRight="35dp"
+        android:layout_marginRight="25dp"
         android:layout_below="@id/lbl">
 
         <ScrollView

@@ -57,12 +57,8 @@
                 android:layout_height="wrap_content"
                 android:background="@color/white"
                 android:contextClickable="true"
-<<<<<<< HEAD
-                android:minHeight="48dp" />
-=======
                 android:minHeight="48dp"
-                android:spinnerMode="dialog" />
->>>>>>> Dev
+                android:spinnerMode="dialog"/>
 
             <EditText
                 android:id="@+id/EditTextIdentificacion1"
