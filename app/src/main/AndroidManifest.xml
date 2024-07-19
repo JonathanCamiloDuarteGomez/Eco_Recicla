@@ -13,9 +13,12 @@
         android:theme="@style/Theme.Eco_Recicla"
         tools:targetApi="31">
         <activity
+            android:name=".GestionDeReciclaje_AgregarSolicitudDeRecogida"
+            android:exported="false" >
+        </activity>
+        <activity
             android:name=".GestionDeReciclajeAgregarObjeto"
             android:exported="false" />
-
         <activity
             android:name=".Premios"
             android:exported="false" />
@@ -49,7 +52,6 @@
         <activity
             android:name=".MenuInformacionUsuario"
             android:exported="false" />
-
     </application>
 
 </manifest>

@@ -1,9 +1,11 @@
 package com.example.eco_recicla;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
@@ -23,6 +25,7 @@ import java.util.List;
 public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     private String[] header;
     private ArrayList<String[]> rows;
+    private Button btnSiguiente;
 
     TableDynamic tableDynamic;
     private TableLayout tablaObjetosAgregados;
@@ -31,12 +34,22 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     Spinner spinnerGrupo;
     Spinner spinnerTipo;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_de_reciclaje_agregar_objeto);
 
+        btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
         //navegacion entre pantallas
+        btnSiguiente.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
+                startActivity(next);
+                finish();
+            }
+        });
 
 
         //Configuracion tabla de objetos agregados
@@ -97,6 +110,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             }
         });
 
+
     }
 
     private void configuracionSppinerTipo(CategoriasDeReciclaje categoria){
@@ -142,36 +156,5 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 }
-/*
-    Spinner spinnerProblemas = findViewById(R.id.spinner);
-        //opcionSpinner
-        String[] problemas = new String[ProblemaEcoambiental.values().length+1];// pasa el enum
-        problemas[0] = "Seleccione la Problematica";
-        for (int i=0; i<ProblemaEcoambiental.values().length; i++){//traer los nombres del enum y guardolos en el array
-            problemas[i+1] = ProblemaEcoambiental.values()[i].getNombre();
-        }
-        //configurar el Spiner con los nombres de los problemas
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, problemas);//pasarle el array
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);//pasarle el layout
-        spinnerProblemas.setAdapter(adapter);//pasarle el adapter
-        //configurar el listener del spinner
-        spinnerProblemas.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                if(position==0){
-                    textViewInfoProblema.setText("Seleccione la Problematica");
-                }else {
-                    ProblemaEcoambiental problema = ProblemaEcoambiental.values()[position-1];
-                    InfoProblemaEcoambiental infoProblema = new InfoProblemaEcoambiental(problema, "Descripción del problema", "Impacto del problema");
-                    textViewInfoProblema.setText(infoProblema.toString());
-                }
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-                textViewInfoProblema.setText("Seleccione la Problematica");
-            }
-        });
- */
 

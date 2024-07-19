@@ -36,6 +36,7 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onClick(View v) {
                 Intent next = new Intent(MenuPrincipal.this, clase);
                 startActivity(next);
+                finish();
             }
         });
     }
