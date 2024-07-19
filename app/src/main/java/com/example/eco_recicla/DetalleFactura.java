@@ -34,7 +34,7 @@ public class DetalleFactura extends AppCompatActivity {
         numFactura = findViewById(R.id.numFactura_txt);
         numFactura.setText(nFactura);
 
-        header = new String[]{"Id Producto","Nombre","Kg","Valor","Coins","Total"};
+        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
         tablaFactura=(TableLayout) findViewById(R.id.tablaFactura);
         rows = new ArrayList<>();
 
@@ -58,11 +58,9 @@ public class DetalleFactura extends AppCompatActivity {
     }
 
     private ArrayList<String[]> getProducto() {
-        rows.add(new String[]{"1","Carton","1000","1000000","100","1000000"});
-        rows.add(new String[]{"2","Plastico","55","5500","55","suma"});
-        rows.add(new String[]{"3","Aluminio","2","10000","140","suma"});
-        rows.add(new String[]{"4","Carton","10","100","1","suma"});
-        rows.add(new String[]{" "," "," "," ","Total ","150000"});
+        rows.add(new String[]{"1","Cartón","40","500","20000","10","10","20000"});
+        rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
+        rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
         return rows;
     }
 

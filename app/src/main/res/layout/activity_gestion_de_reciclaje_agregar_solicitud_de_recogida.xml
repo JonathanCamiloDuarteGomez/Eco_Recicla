@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    android:orientation="vertical"
+    tools:context=".GestionDeReciclaje_AgregarSolicitudDeRecogida">
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:text="EcoRecicla"
+        android:layout_marginTop="22dp"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText" />
+
+
+    <TextView
+        android:id="@+id/header_title_txt"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimarylight"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Solicitud de Recogida"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    <TextView
+        android:id="@+id/apartardoEmpresas"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimarylight"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Empresa"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+    <Spinner
+        android:id="@+id/spinnerSeleccionDeEmpresa"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/apartardoEmpresas"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gris"
+        android:minHeight="48dp"
+        android:spinnerMode="dialog" />
+    <TextView
+        android:id="@+id/apartardoVehiculo"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimarylight"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Datos Del Conductor y Vehiculo"
+        android:textColor="@color/black"
+        android:textSize="16sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/apartardoVehiculo"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gris"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerConductor"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck"
+            android:spinnerMode="dialog"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerPlacaVehiculo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck"
+            android:spinnerMode="dialog"
+            />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="25dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/datePickerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginRight="5dp"
+            android:background="#330091EA"
+            android:text="Fecha de Recogida" />
+
+        <Button
+            android:id="@+id/timePickerButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_marginLeft="20dp"
+            android:background="#33FFFFFF"
+            android:hapticFeedbackEnabled="false"
+            android:text="Hora de Recogida" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <EditText
+            android:id="@+id/etDate"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="Fecha de Recogida"
+            android:minHeight="48dp" />
+
+
+        <EditText
+            android:id="@+id/timeTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_margin="15dp"
+            android:clickable="false"
+            android:focusable="false"
+            android:hint="Hora de Recogida"
+            android:minHeight="48dp" />
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/linearLayout2"
+        android:layout_marginTop="140dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnIrAGestionDeReciclajeAgregarObjeto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="#00F0EEF4"
+            android:drawableLeft="@drawable/anterior"
+            tools:ignore="SpeakableTextPresentCheck" />
+        <ImageButton
+            android:id="@+id/btnCancelar"
+            android:layout_width="0px"
+            android:layout_height="match_parent"
+            android:layout_weight="0.3"
+            android:background="@drawable/baseline_cancel_24"
+            tools:ignore="SpeakableTextPresentCheck"
+
+            />
+
+        <Button
+            android:id="@+id/btnIrACreacionConfirmacion"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="0dp"
+            android:layout_weight="0.3"
+            android:background="#00F0EEF4"
+            android:drawableRight="@drawable/siguiente"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+
+
+
+
+
+
+</LinearLayout>

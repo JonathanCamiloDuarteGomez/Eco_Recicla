@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GestionDeReciclajeAgregarObjeto"
+    android:background="@drawable/background">
+
+    <TextView
+        android:id="@+id/header_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:textStyle="italic"
+        android:textColor="#FFFFFF"
+        android:gravity="center"
+        android:text="EcoRecicla"
+        android:layout_marginTop="22dp"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText" />
+
+    <TextView
+        android:id="@+id/header_title_txt"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimarylight"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Objetos a Vender"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/lbl_Datos_personales"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header_title_txt"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimarylight"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Datos Personales"
+        android:textAlignment="center"
+        android:textColor="@color/black"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextViewNumIdentificacion"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl_Datos_personales"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="CC :100012457"
+        android:textAlignment="center"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextViewNombreCompleto"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewNumIdentificacion"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Nombre completo: Andres Pepito Perez Perez"
+        android:textAlignment="center"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/TextViewTelefonoCelular"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewNombreCompleto"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/colorPrimaryDark"
+        android:fontFamily="monospace"
+        android:padding="5dp"
+        android:text="Teléfono : 31384455"
+        android:textAlignment="center"
+        android:textColor="#9E9E9E"
+        android:textSize="14sp"
+        android:textStyle="bold" />
+
+    <Spinner
+        android:id="@+id/spinnerSeleccionDeDireccion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/TextViewTelefonoCelular"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gris"
+        android:minHeight="48dp"
+        android:spinnerMode="dialog" />
+
+    <TextView
+        android:id="@+id/lbl1"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/spinnerSeleccionDeDireccion"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="monospace"
+        android:padding="1dp"
+        android:text="Agregar Objeto"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/lbl1"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="15dp"
+        android:background="@color/gris"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Spinner
+            android:id="@+id/spinnerGrupo1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck"
+            android:spinnerMode="dialog"
+            />
+
+        <Spinner
+            android:id="@+id/spinnerTipo1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            tools:ignore="TouchTargetSizeCheck"
+            android:spinnerMode="dialog"
+            />
+
+        <EditText
+            android:id="@+id/EditTextKG"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:hint="KG"
+            android:inputType="numberDecimal"
+            android:textAlignment="center"
+            tools:ignore="TouchTargetSizeCheck" />
+
+        <ImageButton
+            android:id="@+id/imageButtonAgregarObjeto"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="@drawable/agregar1"
+            android:contentDescription="camara"
+            android:hapticFeedbackEnabled="false"
+            tools:ignore="TouchTargetSizeCheck" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/lbl"
+        style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/linearLayout"
+        android:layout_marginLeft="15dp"
+        android:layout_marginTop="4dp"
+        android:layout_marginRight="15dp"
+        android:fontFamily="monospace"
+        android:padding="1dp"
+        android:text="Lista de objetos agregados"
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <HorizontalScrollView
+        android:id="@+id/scrollView1"
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:layout_marginBottom="45dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="-2dp"
+        android:layout_marginRight="25dp"
+        android:layout_below="@id/lbl">
+
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fillViewport="true">
+
+            <TableLayout
+                android:id="@+id/tablaAgregarObjeto"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:background="@color/colorPrimaryDark"
+                android:orientation="horizontal">
+            </TableLayout>
+
+        </ScrollView>
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:layout_below="@id/scrollView1"
+        android:layout_marginTop="-40dp"
+        android:layout_marginBottom="0dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnIrAMenuPrincipal"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_weight="0.5"
+            android:background="#00F0EEF4"
+
+            android:drawableLeft="@drawable/anterior"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+        <Button
+            android:id="@+id/btnSiguiente"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="110dp"
+            android:layout_weight="0.5"
+            android:background="#00F0EEF4"
+            android:drawableLeft="@drawable/siguiente"
+            tools:ignore="SpeakableTextPresentCheck" />
+    </LinearLayout>
+</RelativeLayout>

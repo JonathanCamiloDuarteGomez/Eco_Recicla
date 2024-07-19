@@ -21,7 +21,8 @@ public class MenuPrincipal extends AppCompatActivity {
         ImageButton btnSalir = findViewById(R.id.floatingActionButton2);
 
         //en la siguiente funcion se ingresa el bton y la clase hacia donde se va
-        cambioDePantalla(btnGestionDeRe, HistorialActivity.class);
+
+        cambioDePantalla(btnGestionDeRe, GestionDeReciclajeAgregarObjeto.class);
         cambioDePantalla(btnIncentivosRecompensas, Premios.class);
         cambioDePantalla(btnEstadisticasDeReciclaje, HistorialActivity.class);
         cambioDePantalla(btnDatosPersonales, MenuInformacionUsuario.class);
@@ -35,6 +36,7 @@ public class MenuPrincipal extends AppCompatActivity {
             public void onClick(View v) {
                 Intent next = new Intent(MenuPrincipal.this, clase);
                 startActivity(next);
+                finish();
             }
         });
     }
