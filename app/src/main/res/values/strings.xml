@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Eco_Recicla</string>
+    <!--Pantanlla detalle de factura-->
+    <string name="header_numFactura_Dinamico">#Factura</string>
+    <string name="title_activity_menu_pricipal">MenuPricipal</string>
+    <string name="txtBienvenida">Bienvenido \n \nPepito Perez </string>
+    <!-- string del login-->
+
 </resources>

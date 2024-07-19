@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background"
+    tools:context=".CrearCuentaActivity">
+
+
+
+    <TextView
+        android:id="@+id/mensa_crear_corr"
+        android:layout_width="151dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="Crear Cuenta"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/mensa_cuenta"
+        android:layout_width="316dp"
+        android:layout_height="43dp"
+        android:layout_below="@+id/mensa_crear_corr"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:text="Ingrese los datos Solicitados o si ya tiene una cuenta puedes iniciar sesion"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+    <ScrollView
+        android:id="@+id/scrollView"
+        android:layout_width="332dp"
+        android:layout_height="257dp"
+        android:layout_below="@+id/mensa_cuenta"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="15dp"
+        android:padding="2dp"
+
+        android:visibility="visible"
+        tools:visibility="visible">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <Spinner
+                android:id="@+id/spinnerTipoDeIdentificación"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                android:contextClickable="true"
+                android:minHeight="48dp"
+                android:spinnerMode="dialog"/>
+
+            <EditText
+                android:id="@+id/EditTextIdentificacion1"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Número ID*"
+                android:textAlignment="center"
+                android:inputType="numberDecimal"
+                />
+
+
+            <EditText
+                android:id="@+id/EditTextName"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Nombre*"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/EditTextApellido"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Apellido*"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/EditTextEdad"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Edad*"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/EditTextEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Correo Electrónico*"
+                android:textAlignment="center" />
+            <EditText
+                android:id="@+id/EditTextTelefono"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Celular/Teléfono*"
+                android:textAlignment="center"
+                android:inputType="phone"
+                />
+
+            <EditText
+                android:id="@+id/EditTextAdress1"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Dirección*"
+                android:textAlignment="center" />
+
+            <EditText
+                android:id="@+id/EditTextAdress2"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@android:color/white"
+                android:hint="Dirección Alternativa*"
+                android:textAlignment="center" />
+        </LinearLayout>
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/mensa_lim_contra"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scrollView"
+        android:layout_marginTop="12dp"
+        android:text="La contraseña debe tener mínimo 8 caracteres"
+        android:textAlignment="center"
+        android:textColor="#FFFFFF" />
+
+    <EditText
+        android:id="@+id/EditTextContras"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/mensa_lim_contra"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/white"
+        android:hint="Contraseña*"
+        android:textAlignment="center" />
+
+    <EditText
+        android:id="@+id/EditTextContras_Repeticion"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/EditTextContras"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/white"
+        android:hint="Repetir Contraseña*"
+        android:textAlignment="center" />
+
+    <CheckBox
+        android:id="@+id/checkBoxTratoDatos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_below="@+id/EditTextContras_Repeticion"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="85dp"
+        android:textStyle="bold"
+        android:text="Aceptar Tratamiento de Datos"
+        android:textAlignment="center" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="316dp"
+        android:layout_height="48dp"
+        android:layout_below="@+id/checkBoxTratoDatos"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp"
+        android:backgroundTint="#009E0F"
+        android:text="Registrarme"
+        android:textAlignment="center" />
+    <Button
+        android:id="@+id/btnIrAloginRegistrar"
+        android:layout_width="118dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/btnRegistrar"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="2dp"
+        android:layout_marginBottom="30dp"
+        android:background="#00F0EEF4"
+        android:drawableLeft="@drawable/leave"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+
+
+</RelativeLayout>
