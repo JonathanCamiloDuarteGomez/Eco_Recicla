@@ -58,7 +58,11 @@
                 android:background="@color/white"
                 android:contextClickable="true"
                 android:minHeight="48dp"
+<<<<<<< HEAD
                 android:spinnerMode="dialog" />
+=======
+                android:spinnerMode="dialog"/>
+>>>>>>> c1ca808d4fcd8c882b4233beef56e3f12c9ffffa
 
             <EditText
                 android:id="@+id/EditTextIdentificacion1"

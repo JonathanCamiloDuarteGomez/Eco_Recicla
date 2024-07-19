@@ -1,6 +1,7 @@
 package com.example.eco_recicla;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -20,7 +21,6 @@ public class TableDynamic {
     private int indexColumn;
     private int indexRow;
 
-
     public TableDynamic(TableLayout tableLayout, Context context) {
         this.tableLayout = tableLayout;
         this.context = context;
@@ -30,80 +30,89 @@ public class TableDynamic {
         this.header = header;
         createHeader();
     }
-    public void addData(ArrayList<String[]>data){
-        this.data=data;
+
+    public void addData(ArrayList<String[]> data) {
+        this.data = data;
         createDataTable();
     }
-    private void newRow(){ //este metodo es para llamar una fila nueva en el tableLayout
-        tableRow = new TableRow(context);
 
+    private void newRow() {
+        tableRow = new TableRow(context);
     }
-    private void newCell(){
+
+    private void newCell() {
         txtCell = new TextView(context);
         txtCell.setGravity(Gravity.CENTER);
         txtCell.setTextSize(12);
         txtCell.setTextColor(context.getResources().getColor(android.R.color.white));
     }
 
-    private void createHeader(){
-        indexColumn=0;
-        newRow();
-        while (indexColumn<header.length){
-            newCell();
-            txtCell.setText(header[indexColumn]);
-            tableRow.addView(txtCell,newTableRowParamas());
-            indexColumn++;
-        }
-        //agregamos la fila a la tabla
-        tableLayout.addView(tableRow);
-    }
-    //metodo para agregar datos a la tabla
-    //este lo voy a usar cuando se agrega un producto a una factura especifica
-    public void addItems(String[] item){
-        String info;
-        data.add(item);
+    private void createHeader() {
         indexColumn = 0;
         newRow();
-        while (indexColumn<header.length){
+        while (indexColumn < header.length) {
             newCell();
-            info = (indexColumn<item.length)?header[indexColumn++]:"";
-            txtCell.setText(info);
-            tableRow.addView(txtCell,newTableRowParamas());
+            txtCell.setText(header[indexColumn]);
+            tableRow.addView(txtCell, newTableRowParamas());
             indexColumn++;
         }
-        tableLayout.addView(tableRow,data.size()-1);
-
+        tableLayout.addView(tableRow);
     }
-    //metodo para agregar datos a la tabla
-    private void createDataTable(){
+
+    public void addItems(String[] item) {
+        /*
+            Es importante tener en cuanta que si se usa y no se ha creado la tabla con el metodo create table
+            este metodo no va a funcionar y tendremos problemas de visualizacion nos saca de la app.
+            Por tanto toca crear la tabla antes de usar este metodo y luego usar este metodo.
+            
+         */
+        Log.d("TableDynamic", "addItems: " + item.length);
+        data.add(item);
+        Log.d("TableDynamic", "El problema no es el add");
+        indexColumn = 0;
+        newRow();
+        while (indexColumn < header.length) {
+            newCell();
+            String info = (indexColumn < item.length) ? item[indexColumn] : "";
+            txtCell.setText(info);
+            tableRow.addView(txtCell, newTableRowParamas());
+            indexColumn++;
+        }
+        tableLayout.addView(tableRow);
+    }
+
+    private void createDataTable() {
         String info;
-        for(indexRow = 0; indexRow<data.size(); indexRow++){
+        for (indexRow = 0; indexRow < data.size(); indexRow++) {
             newRow();
-            for(indexColumn = 0; indexColumn<header.length; indexColumn++){
+            for (indexColumn = 0; indexColumn < header.length; indexColumn++) {
                 newCell();
-                String[] row=data.get(indexRow);
-                info = (indexColumn<row.length)?row[indexColumn]:"";
+                String[] row = data.get(indexRow);
+                info = (indexColumn < row.length) ? row[indexColumn] : "";
                 txtCell.setText(info);
-                tableRow.addView(txtCell,newTableRowParamas());
+                tableRow.addView(txtCell, newTableRowParamas());
             }
             tableLayout.addView(tableRow);
         }
     }
-    //metodo para crear las lineas de la tabla
-    private TableRow.LayoutParams newTableRowParamas(){
+
+    private TableRow.LayoutParams newTableRowParamas() {
         TableRow.LayoutParams params = new TableRow.LayoutParams();
-        params.setMargins(1,1,1,1);
-        params.gravity=Gravity.CENTER;
-        params.weight=1;
+        params.setMargins(1, 1, 1, 1);
+        params.gravity = Gravity.CENTER;
+        params.weight = 1;
         return params;
     }
-    private TableRow getRow(int index){
+
+    private TableRow getRow(int index) {
         return (TableRow) tableLayout.getChildAt(index);
     }
-    //cambiar el color de las lineas
-    public void linearColor(){
-        indexRow=0;
-        while (indexRow<data.size())
-            getRow(indexRow++).setBackgroundColor(context.getResources().getColor(android.R.color.black));
+
+    public void linearColor() {
+        indexRow = 0;
+        while (indexRow < data.size()) {
+            getRow(indexRow).setBackgroundColor(context.getResources().getColor(android.R.color.black));
+            indexRow++;
+        }
     }
 }

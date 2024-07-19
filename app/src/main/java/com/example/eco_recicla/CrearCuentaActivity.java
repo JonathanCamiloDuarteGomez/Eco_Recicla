@@ -27,7 +27,11 @@ public class CrearCuentaActivity extends AppCompatActivity {
         Spinner spinnerTipoDeIdentificación = findViewById(R.id.spinnerTipoDeIdentificación);
         //opciones del spinner
         String[] problemas = new String[TiposDeDocumentos.values().length+1];
+<<<<<<< HEAD
         problemas[0] = "Seleccione la Problematica";
+=======
+        problemas[0] = "Seleccione Tipo de documento";
+>>>>>>> c1ca808d4fcd8c882b4233beef56e3f12c9ffffa
         for (int i=0; i<TiposDeDocumentos.values().length; i++){//mostrar uno a uno
             problemas[i+1] = TiposDeDocumentos.values()[i].getNombre();
         }
