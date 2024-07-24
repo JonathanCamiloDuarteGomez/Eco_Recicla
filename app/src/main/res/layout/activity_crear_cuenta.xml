@@ -149,7 +149,7 @@
         android:textColor="#FFFFFF" />
 
     <EditText
-        android:id="@+id/EditTextContras"
+        android:id="@+id/EditTextContrasena"
         android:layout_width="316dp"
         android:layout_height="48dp"
         android:layout_below="@+id/mensa_lim_contra"
@@ -163,7 +163,7 @@
         android:id="@+id/EditTextContras_Repeticion"
         android:layout_width="316dp"
         android:layout_height="48dp"
-        android:layout_below="@+id/EditTextContras"
+        android:layout_below="@+id/EditTextContrasena"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="12dp"
         android:background="@android:color/white"
