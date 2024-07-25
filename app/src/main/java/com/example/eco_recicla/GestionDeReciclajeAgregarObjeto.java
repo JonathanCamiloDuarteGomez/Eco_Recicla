@@ -56,8 +56,10 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
         btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = "Direccion 1";direcciones[2] = "Direccion 2";
 
-        String direccion,grupo,tipo = "";
-        float kg = 0;
+        direccion = "";
+        grupo = "";
+        tipo = "";
+        kg = 0.0F;
 
         //navegacion entre pantallas
         btnIrAMenuPrincipal.setOnClickListener(new View.OnClickListener() {
@@ -73,6 +75,14 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 try {
                     if (tableDynamic != null && tableDynamic.sizeData() != 0) {
                         Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
+
+                        //enviar datos capturados a la siguiente pantalla
+                        // Añadir datos al Intent
+                        next.putExtra("direccion", direccion.toString());
+                        next.putExtra("grupo", grupo.toString());
+                        next.putExtra("tipo", tipo.toString());
+                        next.putExtra("kg", Float.toString(kg));
+
                         startActivity(next);
                         finish();
                     }

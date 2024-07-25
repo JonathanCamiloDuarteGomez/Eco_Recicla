@@ -58,6 +58,14 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         nombreConductores[0] = "Seleccione Conductor";nombreConductores[1] = "Conductor 1";nombreConductores[2] = "Conductor 2";
         empresaSeleccionada = "";vehiculoSeleccionado = "";conductorSeleccionado = "";date = "";time = "";
 
+        //Obtener el Intent que inició esta actividad
+        Intent intent = getIntent();
+        // Obtener los datos del Intent
+        String direccion = intent.getStringExtra("direccion");
+        String grupo = intent.getStringExtra("grupo");
+        String tipo = intent.getStringExtra("tipo");
+        String kg = intent.getStringExtra("kg");
+
 
         // Navegación entre pantallas
         btnIrAGestionDeReciclajeAgregarObjeto.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +88,19 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
             @Override
             public void onClick(View v) {
                 if(obtenerInformacionSegunSpinner()==true){
-                    Intent next = new Intent(GestionDeReciclaje_AgregarSolicitudDeRecogida.this, MenuPrincipal.class);
+                    Intent next = new Intent(GestionDeReciclaje_AgregarSolicitudDeRecogida.this, GestionDeReciclaje_CreacionYConfirmacionDeRecogida.class);
+                    //enviar datos capturados a la siguiente pantalla
+                    //esta pantalla
+                    next.putExtra("date", date.toString());
+                    next.putExtra("time", time.toString());
+                    next.putExtra("empresa", empresaSeleccionada.toString());
+                    next.putExtra("conductor", conductorSeleccionado.toString());
+                    next.putExtra("vehiculo", vehiculoSeleccionado.toString());
+                    //pantalla de gestion de reciclaje agregar objeto
+                    next.putExtra("kg", kg);
+                    next.putExtra("direccion", direccion.toString());
+                    next.putExtra("grupo", grupo.toString());
+                    next.putExtra("tipo", tipo.toString());
                     startActivity(next);
                     finish();
                 }else{
