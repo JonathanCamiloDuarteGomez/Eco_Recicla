@@ -70,11 +70,20 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         btnSiguiente.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
-                startActivity(next);
-                finish();
+                try {
+                    if (tableDynamic != null && tableDynamic.sizeData() != 0) {
+                        Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
+                        startActivity(next);
+                        finish();
+                    }
+                } catch (Exception e) {
+                    Log.e("Error", "Error al procesar el botón Siguiente", e);
+                    Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Ingrese almenos un Objeto", Toast.LENGTH_SHORT).show();
+                }
             }
         });
+
+
 
 
         //Configuracion tabla de objetos agregados
@@ -88,6 +97,8 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         tableDynamic.addHeader(header);
         //## se necesita encontrar la forma de no tenerque llamar a addData  y que la tabla se cree una sola vez
         //tableDynamic.addData(getProducto());
+
+
 
 
         agregarObjeto.setOnClickListener(new View.OnClickListener(){
@@ -131,6 +142,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if(position==0){
+
                     Log.i("Direccion: ",direcciones[position].toString());
                 }else {
                     Log.i("Direccion: ",direcciones[position].toString());
@@ -205,7 +217,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
     //este lo voy a usar cuando se agrega un producto a una factura especifica
     public void saveItem(){
-        String[] item = new String[]{"3","Aluminio","10","1500","15000","100","1000","15000"};
+        String[] item = new String[]{"3",tipo,Float.toString(kg),"1500","15000","100","1000","15000"};
         tableDynamic.addItems(item);
     }
 

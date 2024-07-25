@@ -11,6 +11,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
@@ -19,9 +20,11 @@ import com.example.eco_recicla.PickerFragment.DatePickerFragment;
 import com.example.eco_recicla.PickerFragment.TimePickerFragment;
 
 public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActivity {
-    private EditText etDate;
+    private TextView dateTextView;
+    private TextView timeTextView;
     private Button btnDate;
     private Button btnIrAGestionDeReciclajeAgregarObjeto;
+    private Button btnIrACreacionConfirmacion;
     private ImageButton btnCancelar;
     private Spinner spinnerSeleccionDeEmpresa;
     private Spinner spinnerPlacaVehiculo;
@@ -30,20 +33,30 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
     private String[] nombreVehiculos = new String[3];
     private String[] nombreConductores = new String[3];
 
+    public String empresaSeleccionada;
+    public String vehiculoSeleccionado;
+    public String conductorSeleccionado;
+    public String date;
+    public String time;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_de_reciclaje_agregar_solicitud_de_recogida);
-        etDate = findViewById(R.id.etDate);
+
+        dateTextView = findViewById(R.id.etDate);
+        timeTextView = findViewById(R.id.timeTextView);
         btnDate = findViewById(R.id.datePickerButton);
         btnIrAGestionDeReciclajeAgregarObjeto = findViewById(R.id.btnIrAGestionDeReciclajeAgregarObjeto);
         btnCancelar = findViewById(R.id.btnCancelar);
+        btnIrACreacionConfirmacion = findViewById(R.id.btnIrACreacionConfirmacion);
         spinnerSeleccionDeEmpresa = findViewById(R.id.spinnerSeleccionDeEmpresa);
         nombreEmpresas[0] = "Seleccione Empresa";nombreEmpresas[1] = "Empresa 1";nombreEmpresas[2] = "Empresa 2";
         spinnerPlacaVehiculo = findViewById(R.id.spinnerPlacaVehiculo);
         nombreVehiculos[0] = "Seleccione Vehículo";nombreVehiculos[1] = "Vehículo 1";nombreVehiculos[2] = "Vehículo 2";
         spinnerConductor = findViewById(R.id.spinnerConductor);
         nombreConductores[0] = "Seleccione Conductor";nombreConductores[1] = "Conductor 1";nombreConductores[2] = "Conductor 2";
+        empresaSeleccionada = "";vehiculoSeleccionado = "";conductorSeleccionado = "";date = "";time = "";
 
 
         // Navegación entre pantallas
@@ -63,6 +76,20 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
                 finish();
             }
         });
+        btnIrACreacionConfirmacion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(obtenerInformacionSegunSpinner()==true){
+                    Intent next = new Intent(GestionDeReciclaje_AgregarSolicitudDeRecogida.this, MenuPrincipal.class);
+                    startActivity(next);
+                    finish();
+                }else{
+                    Toast.makeText(GestionDeReciclaje_AgregarSolicitudDeRecogida.this, "Datos ingresados incorrectamente", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
+
 
         // Configurar el OnClickListener para el botón de los picker
         btnDate.setOnClickListener(v -> showDatePickerDialog());
@@ -152,7 +179,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         String day_string = Integer.toString(day);
         String year_string = Integer.toString(year);
         String dateMessage = (month_string + "/" + day_string + "/" + year_string);
-        TextView dateTextView = findViewById(R.id.etDate);
+
         dateTextView.setText(dateMessage);
     }
 
@@ -160,25 +187,52 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         String hour_string = Integer.toString(hourOfDay);
         String minute_string = Integer.toString(minute);
         String timeMessage = (hour_string + ":" + minute_string);
-        TextView timeTextView = findViewById(R.id.timeTextView);
         timeTextView.setText(timeMessage);
     }
 
     // Función para obtener la información basada en el spinner activo
-    private void obtenerInformacionSegunSpinner() {
+    private boolean obtenerInformacionSegunSpinner() {
         String empresaSeleccionada = spinnerSeleccionDeEmpresa.getSelectedItem().toString();
         String vehiculoSeleccionado = spinnerPlacaVehiculo.getSelectedItem().toString();
         String conductorSeleccionado = spinnerConductor.getSelectedItem().toString();
 
-        // Verificar cuál spinner tiene la información seleccionada
-        if (!empresaSeleccionada.equals("Seleccione Empresa")) {
-            Log.i("Info Empresa", empresaSeleccionada);
-        } else if (!vehiculoSeleccionado.equals("Seleccione Vehículo")) {
-            Log.i("Info Vehículo", vehiculoSeleccionado);
-        } else if (!conductorSeleccionado.equals("Seleccione Conductor")) {
-            Log.i("Info Conductor", conductorSeleccionado);
+        // Verificar si se ha seleccionado alguna opción válida
+        boolean isTimeAndDateValid = !timeTextView.getText().toString().equals("") && !dateTextView.getText().toString().equals("");
+        boolean isEmpresaSeleccionada = !empresaSeleccionada.equals("Seleccione Empresa");
+        boolean isVehiculoSeleccionado = !vehiculoSeleccionado.equals("Seleccione Vehículo");
+        boolean isConductorSeleccionado = !conductorSeleccionado.equals("Seleccione Conductor");
+
+        if (isTimeAndDateValid) {
+            this.time = timeTextView.getText().toString();
+            this.date = dateTextView.getText().toString();
+            Log.i("Info Tiempo", this.time + "\nFecha: " + this.date);
         } else {
-            Log.i("Info", "No se ha seleccionado ninguna opción válida");
+            Log.i("Info Tiempo y Fecha", "Tiempo y fecha no seleccionados");
         }
+
+        if (isEmpresaSeleccionada) {
+            this.empresaSeleccionada = empresaSeleccionada;
+            Log.i("Info Empresa", this.empresaSeleccionada);
+        } else {
+            Log.i("Info Empresa", "Empresa no seleccionada");
+        }
+
+        if (isVehiculoSeleccionado) {
+            this.vehiculoSeleccionado = vehiculoSeleccionado;
+            Log.i("Info Vehículo", this.vehiculoSeleccionado);
+        } else {
+            Log.i("Info Vehículo", "Vehículo no seleccionado");
+        }
+
+        if (isConductorSeleccionado) {
+            this.conductorSeleccionado = conductorSeleccionado;
+            Log.i("Info Conductor", this.conductorSeleccionado);
+        } else {
+            Log.i("Info Conductor", "Conductor no seleccionado");
+        }
+
+        // Verificar que todas las condiciones se cumplan
+        return isTimeAndDateValid && isEmpresaSeleccionada && isVehiculoSeleccionado && isConductorSeleccionado;
     }
+
 }

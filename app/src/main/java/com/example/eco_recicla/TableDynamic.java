@@ -115,4 +115,7 @@ public class TableDynamic {
             indexRow++;
         }
     }
+    public int sizeData() {
+        return data.size();
+    }
 }
