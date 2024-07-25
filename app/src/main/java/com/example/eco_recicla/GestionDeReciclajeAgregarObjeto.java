@@ -38,6 +38,10 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     private Spinner spinnerSeleccionDeDireccion;
     private Spinner spinnerGrupo;
     private Spinner spinnerTipo;
+    private String direccion;
+    private String grupo;
+    private String tipo;
+    private float kg;
 
     //opciones del spinner
     String[]direcciones = new String[3];
@@ -51,6 +55,9 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
         btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
         btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = "Direccion 1";direcciones[2] = "Direccion 2";
+
+        String direccion,grupo,tipo = "";
+        float kg = 0;
 
         //navegacion entre pantallas
         btnIrAMenuPrincipal.setOnClickListener(new View.OnClickListener() {
@@ -226,6 +233,16 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                     !grupoSeleccionado.equals("Seleccione la Categoria")&& !editText.getText().toString().equals("")
                     && !tipoSeleccionado.equals("Seleccione la Subcategoria")
                 ) {
+
+                // Verificar cuál spinner tiene la información seleccionada
+                direccion = spinnerSeleccionDeDireccion.getSelectedItem().toString();
+                grupo = spinnerGrupo.getSelectedItem().toString();
+                tipo = spinnerTipo.getSelectedItem().toString();
+                kg = Float.parseFloat(editText.getText().toString());
+                Log.i("Info Direccion", direccionSeleccionada);
+                Log.i("Info Grupo", grupoSeleccionado);
+                Log.i("Info Tipo", tipoSeleccionado);
+                Log.i("Info KG", Float.toString(kg));
 
                 Log.i("Info Direccion", direccionSeleccionada);
                 return true;
