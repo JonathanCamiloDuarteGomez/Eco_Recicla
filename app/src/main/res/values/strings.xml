@@ -10,11 +10,9 @@
         \tNombre de la empresa : CDG \n
         \tConductor : Pepito \n
         \tPlaca : CDS256 \n
-        \tFecha de Recogida \n
-        \t01/07/2024\n
+        \tFecha de Recogida : 01/07/2024\n
         \tHora : 13:00\n
-        \tDirección: \n
-        \tCalle 42#40m-87 sur
+        \tDirección: Calle 42#40m-87 sur
     </string>
 
 </resources>
