@@ -12,16 +12,8 @@ import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
-import com.example.eco_recicla.Enums.TiposDeDocumentos;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +23,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     private String[] header;
     private ArrayList<String[]> rows;
     private Button btnSiguiente;
+
     private Button btnIrAMenuPrincipal;
     TableDynamic tableDynamic;
     private TableLayout tablaObjetosAgregados;
@@ -45,6 +38,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
     //opciones del spinner
     String[]direcciones = new String[3];
+
 
 
 
@@ -96,6 +90,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 
+
         //Configuracion tabla de objetos agregados
         header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
         tablaObjetosAgregados=(TableLayout) findViewById(R.id.tablaAgregarObjeto);
@@ -106,6 +101,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         tableDynamic = new TableDynamic(tablaObjetosAgregados,getApplicationContext());
         tableDynamic.addHeader(header);
         //## se necesita encontrar la forma de no tenerque llamar a addData  y que la tabla se cree una sola vez
+
         //tableDynamic.addData(getProducto());
 
 
@@ -165,6 +161,14 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 Log.i("Tipo de documento", "Seleccione Tipo de documento");
             }
         });
+
+        //configuracion de Spinners
+        spinnerSeleccionDeDireccion = (Spinner) findViewById(R.id.spinnerSeleccionDeDireccion);
+        spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupo1);//categorias de reciclaje
+        spinnerTipo = (Spinner) findViewById(R.id.spinnerTipo1);//subcategorias de reciclaje
+
+        //llama a categoria funcion
+        ConfiguracionCategoriasDeReciclaje();
     }
     private void ConfiguracionCategoriasDeReciclaje(){
         //categorias de reciclaje
@@ -197,6 +201,8 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
     }
 
+
+
     private void configuracionSppinerTipo(CategoriasDeReciclaje categoria){
         //subcategorias de reciclaje
         List<String> subcategories = new ArrayList<>();
@@ -227,11 +233,13 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
     //este lo voy a usar cuando se agrega un producto a una factura especifica
     public void saveItem(){
+
         String[] item = new String[]{"3",tipo,Float.toString(kg),"1500","15000","100","1000","15000"};
         tableDynamic.addItems(item);
     }
 
     private ArrayList<String[]> getProducto() {
+
         //rows.add(new String[]{"","","","","","","",""});
         //rows.add(new String[]{"1","Cartón","40","500","20000","10","10","20000"});
         //rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
@@ -281,5 +289,3 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 }
-
-

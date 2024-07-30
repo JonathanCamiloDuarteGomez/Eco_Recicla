@@ -2,24 +2,22 @@ package com.example.eco_recicla;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.TextView;
+import android.util.Log;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.DialogFragment;
-
 import com.example.eco_recicla.PickerFragment.DatePickerFragment;
 import com.example.eco_recicla.PickerFragment.TimePickerFragment;
 
 public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActivity {
+
     private TextView dateTextView;
     private TextView timeTextView;
     private Button btnDate;
@@ -38,6 +36,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
     public String conductorSeleccionado;
     public String date;
     public String time;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,6 +83,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
                 finish();
             }
         });
+
         btnIrACreacionConfirmacion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -114,6 +114,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         // Configurar el OnClickListener para el botón de los picker
         btnDate.setOnClickListener(v -> showDatePickerDialog());
 
+
         Button timePickerButton = findViewById(R.id.timePickerButton);
         timePickerButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -121,6 +122,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
                 showTimePickerDialog();
             }
         });
+
 
         // Configurar el spinnerSeleccionDeEmpresa
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, nombreEmpresas);
@@ -184,6 +186,7 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
     }
 
     // Funciones de los picker
+
     public void showDatePickerDialog() {
         DialogFragment newFragment = new DatePickerFragment();
         newFragment.show(getSupportFragmentManager(), "datePicker");
@@ -200,13 +203,16 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         String year_string = Integer.toString(year);
         String dateMessage = (month_string + "/" + day_string + "/" + year_string);
 
+
         dateTextView.setText(dateMessage);
     }
+
 
     public void processTimePickerResult(int hourOfDay, int minute) {
         String hour_string = Integer.toString(hourOfDay);
         String minute_string = Integer.toString(minute);
         String timeMessage = (hour_string + ":" + minute_string);
+
         timeTextView.setText(timeMessage);
     }
 
@@ -256,3 +262,4 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
     }
 
 }
+
