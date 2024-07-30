@@ -188,9 +188,8 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:layout_below="@id/linearLayout2"
-        android:layout_marginTop="140dp"
-        android:layout_marginBottom="0dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="170dp"
         android:orientation="horizontal">
 
         <Button
@@ -206,6 +205,9 @@
             android:layout_width="0px"
             android:layout_height="match_parent"
             android:layout_weight="0.3"
+            android:layout_marginLeft="64dp"
+            android:layout_marginRight="64dp"
+
             android:background="@drawable/baseline_cancel_24"
             tools:ignore="SpeakableTextPresentCheck"
 

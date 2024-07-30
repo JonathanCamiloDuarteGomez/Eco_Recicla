@@ -5,5 +5,14 @@
     <string name="title_activity_menu_pricipal">MenuPricipal</string>
     <string name="txtBienvenida">Bienvenido \n \nPepito Perez </string>
     <!-- string del login-->
+    <!--Pantanlla Creacion y Confirmacion de Recogida textViewDatosDeRecoleccion-->
+    <string name="textViewDatosDeRecoleccion">
+        \tNombre de la empresa : CDG \n
+        \tConductor : Pepito \n
+        \tPlaca : CDS256 \n
+        \tFecha de Recogida : 01/07/2024\n
+        \tHora : 13:00\n
+        \tDirección: Calle 42#40m-87 sur
+    </string>
 
 </resources>

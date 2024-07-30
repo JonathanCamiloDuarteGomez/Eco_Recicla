@@ -63,5 +63,3 @@ public class DetalleFactura extends AppCompatActivity {
         rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
         return rows;
     }
-
-}

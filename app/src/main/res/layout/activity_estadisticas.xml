@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Estadisticas">
+
+    <ImageButton
+        android:id="@+id/buttonBack"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_menu_revert"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <TextView
+        android:id="@+id/textViewTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="1dp"
+        android:padding="16dp"
+        android:text="Datos Personales"
+        android:textAlignment="center"
+        android:textSize="40dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@id/myTableLayout"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/buttonBack" />
+
+    <TableLayout
+        android:id="@+id/myTableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:stretchColumns="*"
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonClear"
+        android:padding="16dp"
+        >
+
+        <TableRow>
+            <TextView
+                android:text="email"
+                android:padding="10dp"
+                android:background="#EEEEEE"
+                android:textStyle="bold"
+                android:textAlignment="center" />
+
+            <TextView
+                android:text="Telefono"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="#EEEEEE" />
+            <TextView
+                android:text="Direccion"
+                android:padding="10dp"
+                android:textStyle="bold"
+                android:textAlignment="center"
+                android:background="#EEEEEE" />
+        </TableRow>
+
+    </TableLayout>
+
+
+    <Button
+        android:id="@+id/buttonClear"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Borrar Datos"
+        app:layout_constraintTop_toBottomOf="@id/myTableLayout"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:padding="16dp"
+        />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
