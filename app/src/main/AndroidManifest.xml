@@ -13,11 +13,17 @@
         android:theme="@style/Theme.Eco_Recicla"
         tools:targetApi="31">
         <activity
-            android:name=".GestionDeReciclaje_CreacionYConfirmacionDeRecogida"
+            android:name=".Consejos"
+            android:exported="false" />
+        <activity
+            android:name=".Estadisticas"
             android:exported="false" />
         <activity
             android:name=".GestionDeReciclaje_AgregarSolicitudDeRecogida"
-            android:exported="false"></activity>
+            android:exported="false" />
+        <activity
+            android:name=".GestionDeReciclaje_CreacionYConfirmacionDeRecogida"
+            android:exported="false" />
         <activity
             android:name=".GestionDeReciclajeAgregarObjeto"
             android:exported="false" />

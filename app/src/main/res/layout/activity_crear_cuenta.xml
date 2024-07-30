@@ -60,6 +60,7 @@
                 android:minHeight="48dp"
                 android:spinnerMode="dialog"/>
 
+
             <EditText
                 android:id="@+id/EditTextIdentificacion1"
                 android:layout_width="match_parent"
@@ -67,9 +68,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@android:color/white"
                 android:hint="Número ID*"
-                android:textAlignment="center"
-                android:inputType="numberDecimal"
-                />
+                android:textAlignment="center"/>
 
 
             <EditText
@@ -100,7 +99,7 @@
                 android:textAlignment="center" />
 
             <EditText
-                android:id="@+id/EditTextEmail"
+                android:id="@+id/EditTextContrasena1"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
@@ -149,6 +148,7 @@
         android:textColor="#FFFFFF" />
 
     <EditText
+
         android:id="@+id/EditTextContrasena"
         android:layout_width="316dp"
         android:layout_height="48dp"
