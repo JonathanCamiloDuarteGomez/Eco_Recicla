@@ -24,7 +24,6 @@
         <activity
             android:name=".GestionDeReciclaje_CreacionYConfirmacionDeRecogida"
             android:exported="false" />
-
         <activity
             android:name=".GestionDeReciclajeAgregarObjeto"
             android:exported="false" />
