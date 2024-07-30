@@ -62,4 +62,4 @@ public class DetalleFactura extends AppCompatActivity {
         rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
         rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
         return rows;
-    }
+    }}
