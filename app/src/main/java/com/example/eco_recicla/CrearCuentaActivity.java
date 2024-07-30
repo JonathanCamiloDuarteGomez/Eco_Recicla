@@ -1,5 +1,4 @@
 package com.example.eco_recicla;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -13,7 +12,6 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.eco_recicla.Enums.TiposDeDocumentos;
 import com.example.eco_recicla.PickerFragment.UserManager;
@@ -27,17 +25,18 @@ public class CrearCuentaActivity extends AppCompatActivity {
     private UserManager userManager;
     private CheckBox checkBoxTerms;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
+
         editTextEmail = findViewById(R.id.EditTextIdentificacion1);
         editTextPassword = findViewById(R.id.EditTextContrasena);
         btnIrAloginRegistrar = findViewById(R.id.btnIrAloginRegistrar);
         checkBoxTerms = findViewById(R.id.checkBoxTratoDatos);
 
         userManager = new UserManager(this);
-
 
         Spinner spinnerTipoDeIdentificación = findViewById(R.id.spinnerTipoDeIdentificación);
         //opciones del spinner
@@ -117,3 +116,4 @@ public class CrearCuentaActivity extends AppCompatActivity {
         }
 
 }
+

@@ -262,4 +262,3 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
     }
 
 }
-

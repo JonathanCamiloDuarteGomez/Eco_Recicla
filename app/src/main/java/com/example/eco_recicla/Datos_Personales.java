@@ -9,13 +9,12 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class Datos_Personales extends AppCompatActivity {
-
     private EditText EditTextTelefono, EditTextAdress1, EditTextEmail1;
     private Button btnActualizar;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,3 +61,27 @@ public class Datos_Personales extends AppCompatActivity {
 
 
 }
+
+        ImageButton imageButtonHome = findViewById(R.id.imageButtonHome);
+        Button btnIrAmenuInformacionUsuario = findViewById(R.id.btnIrAmenuInformacionUsuario);
+
+        btnIrAmenuInformacionUsuario.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(Datos_Personales.this, MenuInformacionUsuario.class);
+                startActivity(next);
+            }
+        });
+
+        imageButtonHome.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent next = new Intent(Datos_Personales.this, MenuPrincipal.class);
+                startActivity(next);
+            }
+        });
+    }
+
+
+}
+

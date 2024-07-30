@@ -40,6 +40,16 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".GestionDeReciclaje_AgregarSolicitudDeRecogida"
+            android:exported="false" >
+        </activity>
+        <activity
+            android:name=".GestionDeReciclajeAgregarObjeto"
+            android:exported="false" />
+        <activity
+            android:name=".Premios"
+            android:exported="false" />
+        <activity
             android:name=".DetalleFactura"
             android:exported="false" />
         <activity
@@ -61,5 +71,4 @@
             android:name=".MenuInformacionUsuario"
             android:exported="false" />
     </application>
-
 </manifest>
