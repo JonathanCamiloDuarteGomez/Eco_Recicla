@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eco_recicla.PickerFragment.UserManager;
@@ -20,14 +19,13 @@ import java.util.Locale;
 import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
-    //variables
     private Button btnInicioSesion;
     private Button btnRegistrar;
     private EditText editTextemail;
     private EditText getEditTextPassword;
     private UserManager userManager;
 
-    private String[] Tips= {
+    private String[] Tips = {
             "Ahorra energía apagando las luces que no necesitas.",
             "Desconecta los electrodomésticos que no estás usando.",
             "Utiliza bombillas LED para reducir el consumo de energía.",
@@ -44,15 +42,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        //asignacion de variables
+
         btnInicioSesion = findViewById(R.id.btnInicia_sesion);
         btnRegistrar = findViewById(R.id.btnRegistrar);
-
         editTextemail = findViewById(R.id.EditTextCorreo);
         getEditTextPassword = findViewById(R.id.EditTextPassword);
 
-       // btnOlvContra = findViewById(R.id.btnOlvContra);
-        SharedPreferences preferences = getSharedPreferences("savedDate",MODE_PRIVATE);
+        SharedPreferences preferences = getSharedPreferences("Tips", MODE_PRIVATE);
         String savedDate = preferences.getString("savedDate", "");
         SharedPreferences.Editor editor = preferences.edit();
 
@@ -63,47 +59,43 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, CrearCuentaActivity.class);
                 startActivity(intent);
             }
-
         });
-        btnInicioSesion.setOnClickListener(new View.OnClickListener(){
+
+        btnInicioSesion.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 String email = editTextemail.getText().toString();
                 String password = getEditTextPassword.getText().toString();
 
-                boolean isInitialized = preferences.getBoolean("isInitialized",false);
+                boolean isInitialized = preferences.getBoolean("isInitialized", false);
 
-                if(!isInitialized){
-                    for(int i=0; i < Tips.length;i ++){
-                        editor.putString("tip"+ i,Tips[i]);
+                if (!isInitialized) {
+                    for (int i = 0; i < Tips.length; i++) {
+                        editor.putString("tip_" + i, Tips[i]);
                     }
-                    editor.putBoolean("isInitialized",true);
+                    editor.putBoolean("isInitialized", true);
                     editor.apply();
                 }
 
-                //comparar la fecha actual con la guardada
-
-                SimpleDateFormat sdf = new SimpleDateFormat("EEEE,d 'de' MMMM 'de' yyyy", new Locale("es", "CO"));
+                SimpleDateFormat sdf = new SimpleDateFormat("EEEE, d 'de' MMMM 'de' yyyy", new Locale("es", "CO"));
                 String currentDate = sdf.format(new Date());
-                if(!currentDate.equals(savedDate)){
+                if (!currentDate.equals(savedDate)) {
                     Random random = new Random();
-                    int randomIndex = random.nextInt(9);
+                    int randomIndex = random.nextInt(Tips.length);
                     String newTip = Tips[randomIndex];
-                    //actualzar editor
-                    editor.putString("currenTip",newTip);
-                    editor.putString("saveDate",currentDate);
+                    editor.putString("currentTip", newTip);
+                    editor.putString("savedDate", currentDate);
                     editor.apply();
                 }
 
-                if(userManager.loginUser(email,password)){
+                if (userManager.loginUser(email, password)) {
                     Intent intent = new Intent(MainActivity.this, Consejos.class);
                     startActivity(intent);
                     finish();
-                }else {
-                    Toast.makeText(MainActivity.this,"Email o Password Invalidos",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(MainActivity.this, "Email o Password Invalidos", Toast.LENGTH_SHORT).show();
                 }
             }
         });
     }
-
 }
