@@ -16,9 +16,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.eco_recicla.Enums.TiposDeDocumentos;
-import com.example.eco_recicla.PickerFragment.UserManager;
-
-import com.example.eco_recicla.Enums.TiposDeDocumentos;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 public class CrearCuentaActivity extends AppCompatActivity {
     private EditText editTextEmail, editTextPassword;
@@ -97,7 +96,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 } else if (!checkBoxTerms.isChecked()) {
                     Toast.makeText(CrearCuentaActivity.this,"Debe aceptar terminos y condiciones",Toast.LENGTH_SHORT).show();
                 }else {
-                    registrarUsuario(email,password);
+                    Usuario usuario = new Usuario(email,password);
+                    registrarUsuario(usuario);
                 }
 
                 Intent next = new Intent(CrearCuentaActivity.this, clase);
@@ -110,8 +110,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
             return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
         }
 
-        private void registrarUsuario(String email, String password) {
-            userManager.RegisterUser(email, password);
+        private void registrarUsuario(Usuario usuario) {
+            userManager.registerUser(usuario);
             Toast.makeText(CrearCuentaActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
             finish();
         }

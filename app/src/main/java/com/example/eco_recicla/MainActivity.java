@@ -1,8 +1,5 @@
 package com.example.eco_recicla;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +10,7 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eco_recicla.PickerFragment.UserManager;
+import com.example.eco_recicla.back.UserManager;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
