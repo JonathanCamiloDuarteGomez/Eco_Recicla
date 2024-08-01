@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -71,6 +74,16 @@ public class MenuPrincipal extends AppCompatActivity {
         cambioDePantalla(btnDatosPersonales, MenuInformacionUsuario.class);
         cambioDePantalla(btnSalir, MainActivity.class);//cambiar a login
         //no olvidar reemplazar la clase pa donde se dirije, no son HistorialActivity
+
+        //cambiar el txt de bienvenida por el nombre del usuario
+        //Bienvenido \n \nPepito Perez
+        UserManager UserManager = new UserManager(this);
+        Usuario usuario = UserManager.getUsuario();
+        if (usuario != null) {
+            TextView txtBienvenida = findViewById(R.id.txtBienvenida);
+            txtBienvenida.setText("Bienvenido \n"+"\n"+usuario.getNombre()+" "+usuario.getApellido());
+        }
+
     }
 
     private void cambioDePantalla(ImageButton nombreBtn, final Class<?> clase) {

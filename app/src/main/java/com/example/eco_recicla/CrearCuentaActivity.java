@@ -96,7 +96,10 @@ public class CrearCuentaActivity extends AppCompatActivity {
                 } else if (!checkBoxTerms.isChecked()) {
                     Toast.makeText(CrearCuentaActivity.this,"Debe aceptar terminos y condiciones",Toast.LENGTH_SHORT).show();
                 }else {
-                    Usuario usuario = new Usuario(email,password);
+                    //crear usuario
+                    //TiposDeDocumentos tipoDeDocuemnto, Integer idUsuario, String nombre, String apellido, Integer edad, String email, String telefono, String direccion, String direccionAlternativa, String password
+                    Usuario usuario = new Usuario(TiposDeDocumentos.CEDULA,100,"nombre","apellido",20,email,"3137787041","direccion","direccionAlternativa",password);
+                    //aqui toca traer los demas datos
                     registrarUsuario(usuario);
                 }
 

@@ -41,7 +41,9 @@ public class Datos_Personales extends AppCompatActivity {
             Toast.makeText(this,"Complete los Campos",Toast.LENGTH_SHORT).show();
             return;
         }
-
+        //aquie en ves de crear un nuevo archivo de preferences, toca traer la informacion del usuario y con un set
+        //modificar la informacion del usuario que se puede modificar en los editText
+        
         //guardar datos en sharepreference
         SharedPreferences preferences = getSharedPreferences("DataP",MODE_PRIVATE);
         //habilitar editor para modificar prefencias

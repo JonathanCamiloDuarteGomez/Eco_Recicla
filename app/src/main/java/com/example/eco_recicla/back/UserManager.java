@@ -54,7 +54,7 @@ public class UserManager {
     }
 
     // Método para recuperar un usuario
-    public Usuario getUsuario() {
+    public  Usuario getUsuario() {
         String json = sharedPreferences.getString(USER_KEY, "");
         return gson.fromJson(json, Usuario.class);
     }
