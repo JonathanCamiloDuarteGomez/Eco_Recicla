@@ -6,7 +6,7 @@ import java.util.Map;
 
 public enum CategoriasDeReciclaje {
     PAPEL_CARTON(Map.of(
-            "Papel", Arrays.asList("Periódicos", "revistas", "papel "),
+            "Papel", Arrays.asList("Periódicos", "revistas", "papel"),
             "Cartón", Arrays.asList("Cajas de cartón")
     )),
     VIDRIO(Map.of(
