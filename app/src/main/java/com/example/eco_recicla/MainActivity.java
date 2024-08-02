@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -88,9 +89,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (userManager.loginUser(email, password)) {
-                    Intent intent = new Intent(MainActivity.this, Consejos.class);
-                    startActivity(intent);
-                    finish();
+                    Usuario usuario = userManager.getUsuario();
+                    if(usuario != null){
+                        Intent intent = new Intent(MainActivity.this, Consejos.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "Email o Password Invalidos", Toast.LENGTH_SHORT).show();
                 }
