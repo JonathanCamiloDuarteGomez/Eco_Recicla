@@ -26,7 +26,7 @@ public class ListadoDeProductos {
     }
     //estos metodos se llaman cada vez que se cree un nuevo producto para mantener el valor de la lista actualizado.
     public  Float calcularTotalAPagar() {
-        Float totalPagar = 0f;
+        Float totalPagar = 0.0f;
         for (DataProducto producto : listaDeProductos) {
             totalPagar += producto.calcularTotalValor();
         }
@@ -35,7 +35,7 @@ public class ListadoDeProductos {
     public  Float calcularTotalCoins() {
         Float totalCoins = 0f;
         for (DataProducto producto : listaDeProductos) {
-            totalCoins += producto.calcularTotalCoins();
+            totalCoins += producto.getTotalCoins();
         }
         return totalCoins;
     }

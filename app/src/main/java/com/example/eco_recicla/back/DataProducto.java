@@ -49,10 +49,10 @@ public class DataProducto {
         this.subCategoria = subCategoria;
     }
     public Float calcularTotalCoins() {
-        return kg * coinsKg;
+        return totalCoins = kg * coinsKg;
    }
    public Float calcularTotalValor() {
-        return kg * valorKg;
+        return totalValor = kg * valorKg;
    }
 
     public Integer getIdProducto() {

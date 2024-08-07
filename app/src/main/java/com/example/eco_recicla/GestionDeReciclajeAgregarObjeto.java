@@ -107,7 +107,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
         //Configuracion tabla de objetos agregados
-        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
+        header = new String[]{"Id Producto | ","Nombre | ","Kg | ","Valor Kg | ","$ Valor | ","Coins | ","Total Coins | ","Total  "};
         tablaObjetosAgregados=(TableLayout) findViewById(R.id.tablaAgregarObjeto);
         rows = new ArrayList<>();
 
@@ -141,7 +141,6 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 }else if(flag==true){//si la tabla esta creada
                     if(obtenerInformacionSegunSpinner()==true) {//si la informacion es correcta
                         saveItem();
-
 
                         flag = true;
                         Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados correctamente", Toast.LENGTH_SHORT).show();
@@ -258,7 +257,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         //agregar el producto a la lista de productos
         listadoDeProductos.addProducto(producto,CategoriasDeReciclaje.valueOf(grupo.toUpperCase()),tipo,kg);
         //agregar el producto a la tabla visual
-        String[] item = new String[]{"3",tipo,Float.toString(kg),"1500","15000","100","1000","15000"};
+        String[] item = new String[]{producto.getIdProducto().toString(),tipo,Float.toString(kg),producto.getValorKg().toString(),producto.getTotalValor().toString(),producto.getCoinsKg().toString(),listadoDeProductos.calcularTotalCoins().toString(),listadoDeProductos.calcularTotalAPagar().toString()};
         Log.i("Producto agregado a la lista de productos",listadoDeProductos.getListaDeProductos().get(0).toString()+" \n tamaño : "+listadoDeProductos.getListaDeProductos().size());
         Log.i("Producto traido desde la clase DataProducto",producto.toString());
         tableDynamic.addItems(item);

@@ -68,7 +68,6 @@ public class TableDynamic {
          */
         Log.d("TableDynamic", "addItems: " + item.length);
         data.add(item);
-        Log.d("TableDynamic", "El problema no es el add");
         indexColumn = 0;
         newRow();
         while (indexColumn < header.length) {
