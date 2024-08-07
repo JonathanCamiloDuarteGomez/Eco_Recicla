@@ -18,6 +18,7 @@ import androidx.fragment.app.DialogFragment;
 
 import com.example.eco_recicla.PickerFragment.DatePickerFragment;
 import com.example.eco_recicla.PickerFragment.TimePickerFragment;
+import com.example.eco_recicla.back.ListadoDeProductos;
 
 public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActivity {
     private TextView dateTextView;
@@ -61,10 +62,8 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         //Obtener el Intent que inició esta actividad
         Intent intent = getIntent();
         // Obtener los datos del Intent
+        ListadoDeProductos listadoDeProductos = (ListadoDeProductos) intent.getSerializableExtra("listadoDeProductos");
         String direccion = intent.getStringExtra("direccion");
-        String grupo = intent.getStringExtra("grupo");
-        String tipo = intent.getStringExtra("tipo");
-        String kg = intent.getStringExtra("kg");
 
 
         // Navegación entre pantallas
@@ -97,10 +96,8 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
                     next.putExtra("conductor", conductorSeleccionado.toString());
                     next.putExtra("vehiculo", vehiculoSeleccionado.toString());
                     //pantalla de gestion de reciclaje agregar objeto
-                    next.putExtra("kg", kg);
                     next.putExtra("direccion", direccion.toString());
-                    next.putExtra("grupo", grupo.toString());
-                    next.putExtra("tipo", tipo.toString());
+                    next.putExtra("listadoDeProductos", listadoDeProductos);
                     startActivity(next);
                     finish();
                 }else{

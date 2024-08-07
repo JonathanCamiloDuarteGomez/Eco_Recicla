@@ -49,8 +49,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     //opciones del spinner
     String[]direcciones = new String[3];
 
-    //contadorDeObjetosAgregados
-    private int contadorDeObjetosAgregados = 0;
+    //
     private ListadoDeProductos listadoDeProductos ;
 
 
@@ -86,19 +85,18 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                     if (tableDynamic != null && tableDynamic.sizeData() != 0) {
                         Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
 
-                        //enviar datos capturados a la siguiente pantalla
-                        // Añadir datos al Intent
-                        next.putExtra("direccion", direccion.toString());
-                        next.putExtra("grupo", grupo.toString());
-                        next.putExtra("tipo", tipo.toString());
-                        next.putExtra("kg", Float.toString(kg));
+                        next.putExtra("direccion", direccion);
+                        next.putExtra("grupo", grupo);
+                        next.putExtra("tipo", tipo);
+                        next.putExtra("kg", kg);
+                        next.putExtra("listadoDeProductos", listadoDeProductos);
 
                         startActivity(next);
                         finish();
                     }
                 } catch (Exception e) {
                     Log.e("Error", "Error al procesar el botón Siguiente", e);
-                    Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Ingrese almenos un Objeto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Ingrese al menos un Objeto", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -107,7 +105,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
         //Configuracion tabla de objetos agregados
-        header = new String[]{"Id Producto | ","Nombre | ","Kg | ","Valor Kg | ","$ Valor | ","Coins | ","Total Coins | ","Total  "};
+        header = new String[]{" Id Producto | "," Nombre | "," Kg | "," Valor Kg | "," $ Valor | "," Coins*Kg | "," Total Coins | "," Total  "};
         tablaObjetosAgregados=(TableLayout) findViewById(R.id.tablaAgregarObjeto);
         rows = new ArrayList<>();
 

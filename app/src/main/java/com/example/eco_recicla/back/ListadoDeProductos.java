@@ -5,9 +5,10 @@ import android.util.Log;
 
 import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ListadoDeProductos {
+public class ListadoDeProductos implements Serializable {
     private ArrayList<DataProducto> listaDeProductos;
     public ListadoDeProductos() {
         this.listaDeProductos = new ArrayList<>();

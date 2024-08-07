@@ -17,6 +17,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
+import com.example.eco_recicla.back.DataProducto;
+import com.example.eco_recicla.back.ListadoDeProductos;
+
 import java.util.ArrayList;
 
 public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompatActivity {
@@ -32,14 +35,13 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
     //obtener datos de la anterior pantalla
     // Obtener los datos del Intent
     private String direccion;
-    private String grupo ;
     private String tipo ;
     private String date ;
     private String time ;
     private String conductor ;
     private String empresa ;
     private String placa ;
-    private String kg ;
+    private ListadoDeProductos listadoDeProductos ;
 
 
 
@@ -72,18 +74,17 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
         //traer datos de las anteriores pantallas
          Intent intent = getIntent();
           direccion = intent.getStringExtra("direccion");
-          grupo = intent.getStringExtra("grupo");
           tipo = intent.getStringExtra("tipo");
           date = intent.getStringExtra("date");
           time = intent.getStringExtra("time");
           conductor = intent.getStringExtra("conductor");
           empresa = intent.getStringExtra("empresa");
           placa = intent.getStringExtra("vehiculo");
-          kg = intent.getStringExtra("kg");
+          listadoDeProductos = (ListadoDeProductos) intent.getSerializableExtra("listadoDeProductos");
 
         //configuracion tabla
 
-        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
+        header = new String[]{" Id Producto | "," Nombre | "," Kg | "," Valor Kg | "," $ Valor | "," Coins*Kg | "," Total Coins | "," Total  "};
         tablaFactura=(TableLayout) findViewById(R.id.objetosAgregados);
         rows = new ArrayList<>();
 
@@ -113,11 +114,29 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
 
 
 
-
+    // Traer el listado de productos agregados a la factura
     private ArrayList<String[]> getProducto() {
-        rows.add(new String[]{"1",tipo,kg,"500","20000","10","10","20000"});
-        rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
-        rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
+        // Limpia las filas antes de agregar los productos
+        rows.clear();
+
+        // Itera sobre cada producto en la lista de productos
+        for (DataProducto producto : listadoDeProductos.getListaDeProductos()) {
+            // Agrega cada producto a las filas en el formato requerido
+            rows.add(new String[]{
+                    producto.getIdProducto().toString(),
+                    producto.getNombre(),
+                    String.valueOf(producto.getKg()),
+                    String.valueOf(producto.getValorKg()),
+                    String.valueOf(producto.calcularTotalValor()),
+                    String.valueOf(producto.getCoinsKg()),
+                    String.valueOf(producto.calcularTotalCoins()),
+                    String.valueOf(producto.calcularTotalValor())
+            });
+        }
+
+        // Agrega una fila con el total
+        rows.add(new String[]{" ", " ", " ", " ", " ", "Total:", " C:" + listadoDeProductos.calcularTotalCoins(), "$" + listadoDeProductos.calcularTotalAPagar()});
+
         return rows;
     }
 }

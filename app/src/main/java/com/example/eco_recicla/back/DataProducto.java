@@ -7,6 +7,7 @@ import android.widget.Toast;
 import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
 import com.example.eco_recicla.GestionDeReciclajeAgregarObjeto;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class DataProducto {
+public class DataProducto implements Serializable {
     private Integer idProducto;//independiente
     private String nombre;//independiente
     private Float kg;//dependiente
