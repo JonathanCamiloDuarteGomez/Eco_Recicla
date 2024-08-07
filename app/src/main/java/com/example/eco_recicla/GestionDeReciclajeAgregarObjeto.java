@@ -1,6 +1,7 @@
 package com.example.eco_recicla;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -21,6 +22,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
 import com.example.eco_recicla.Enums.TiposDeDocumentos;
+import com.example.eco_recicla.back.DataProducto;
+import com.example.eco_recicla.back.ListadoDeProductos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,6 +49,10 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     //opciones del spinner
     String[]direcciones = new String[3];
 
+    //contadorDeObjetosAgregados
+    private int contadorDeObjetosAgregados = 0;
+    private ListadoDeProductos listadoDeProductos ;
+
 
 
     @Override
@@ -55,6 +62,9 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
         btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
         btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = "Direccion 1";direcciones[2] = "Direccion 2";
+
+        //inicializar variables
+        listadoDeProductos = new ListadoDeProductos();
 
         direccion = "";
         grupo = "";
@@ -113,12 +123,15 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
         agregarObjeto.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
+
+                //verificar si la tabla esta creada
                 if(!flag){//si la tabla no esta creada
 
                     if(obtenerInformacionSegunSpinner()==true){//si la informacion es correcta
                         tableDynamic.addData(getProducto());
                         tableDynamic.linearColor();
                         saveItem();
+
                         flag = true;
                         Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados correctamente", Toast.LENGTH_SHORT).show();
                     }else if(obtenerInformacionSegunSpinner()==false) {//si la informacion es incorrecta
@@ -126,7 +139,17 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                         flag = false;
                     }
                 }else if(flag==true){//si la tabla esta creada
-                    saveItem();
+                    if(obtenerInformacionSegunSpinner()==true) {//si la informacion es correcta
+                        saveItem();
+
+
+                        flag = true;
+                        Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados correctamente", Toast.LENGTH_SHORT).show();
+                    }else if(obtenerInformacionSegunSpinner()==false) {//si la informacion es incorrecta
+                        Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados incorrectamente", Toast.LENGTH_SHORT).show();
+                        flag = false;
+                    }
+
                 }
             }
         });
@@ -171,7 +194,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         String [] categorias = new String[CategoriasDeReciclaje.values().length+1];
         categorias[0] = "Seleccione la Categoria";
         for(int i=0; i<CategoriasDeReciclaje.values().length; i++){
-            categorias[i + 1] = CategoriasDeReciclaje.values()[i].name().replace("_", " y ");
+            categorias[i + 1] = CategoriasDeReciclaje.values()[i].name();
         }
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -182,6 +205,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     CategoriasDeReciclaje selectedCategory = CategoriasDeReciclaje.values()[position - 1];
+                    grupo = selectedCategory.name();
                     configuracionSppinerTipo(selectedCategory);
                 } else {
                     spinnerTipo.setAdapter(null);
@@ -213,6 +237,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 if (position != 0) {
                     String selectedSubcategory = subcategories.get(position);
                     List<String> examples = categoria.getSubcategories().get(selectedSubcategory);
+                    tipo =selectedSubcategory;
                     Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Subcategoría seleccionada: " + selectedSubcategory + ", Ejemplos: " + examples, Toast.LENGTH_LONG).show();
                 }
             }
@@ -227,8 +252,20 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
     //este lo voy a usar cuando se agrega un producto a una factura especifica
     public void saveItem(){
+
+        //inicializar el producto
+        DataProducto producto = new DataProducto();
+        //agregar el producto a la lista de productos
+        listadoDeProductos.addProducto(producto,CategoriasDeReciclaje.valueOf(grupo.toUpperCase()),tipo,kg);
+        //agregar el producto a la tabla visual
         String[] item = new String[]{"3",tipo,Float.toString(kg),"1500","15000","100","1000","15000"};
+        Log.i("Producto agregado a la lista de productos",listadoDeProductos.getListaDeProductos().get(0).toString()+" \n tamaño : "+listadoDeProductos.getListaDeProductos().size());
+        Log.i("Producto traido desde la clase DataProducto",producto.toString());
         tableDynamic.addItems(item);
+        //limpiar los campos
+        grupo = "";
+        tipo = "";
+        kg = 0.0F;
     }
 
     private ArrayList<String[]> getProducto() {

@@ -7,7 +7,7 @@ import java.util.Map;
 public enum CategoriasDeReciclaje {
     PAPEL_CARTON(Map.of(
             "Papel", Arrays.asList("Periódicos", "revistas", "papel"),
-            "Cartón", Arrays.asList("Cajas de cartón")
+            "Carton", Arrays.asList("Cajas de cartón")
     )),
     VIDRIO(Map.of(
             "Botellas", Arrays.asList("Botellas de vidrio de bebidas")
@@ -24,8 +24,8 @@ public enum CategoriasDeReciclaje {
             "Acero", Arrays.asList("Latas de alimentos", "tapas de frascos", "objetos metálicos diversos")
     )),
     ELECTRONICOS(Map.of(
-            "Electrodomésticos", Arrays.asList("Refrigeradores", "microondas", "lavadoras"),
-            "Electrónica de consumo", Arrays.asList("Teléfonos móviles", "ordenadores", "televisores")
+            "Electrodomesticos", Arrays.asList("Refrigeradores", "microondas", "lavadoras"),
+            "Electronica de consumo", Arrays.asList("Teléfonos móviles", "ordenadores", "televisores")
     ));
 
     private final Map<String, List<String>> subcategories;
