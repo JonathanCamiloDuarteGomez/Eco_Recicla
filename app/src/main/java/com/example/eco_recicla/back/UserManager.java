@@ -18,8 +18,8 @@ public class UserManager {
 
     // Claves utilizadas para almacenar y recuperar datos
     private static final String FACTURAS_KEY = "facturas";
-    private static final String KEY_EMAIL = "email";
-    private static final String KEY_PASSWORD = "password";
+    //private static final String KEY_EMAIL = "email";
+    //private static final String KEY_PASSWORD = "password";
 
     // Variables de instancia
     private SharedPreferences sharedPreferences;
@@ -114,15 +114,22 @@ public class UserManager {
         String json = gson.toJson(facturas);
         // Guardar la cadena JSON en preferencias compartidas
         editor.putString(FACTURAS_KEY, json);
-        editor.apply();
+        editor.commit();
+    }
+    public void saveFacturasForUser(String email, List<Factura> facturas) {
+        // Convertir la lista de facturas a una cadena JSON
+        String json = gson.toJson(facturas);
+        // Guardar la cadena JSON en preferencias compartidas
+        editor.putString(FACTURAS_KEY + email, json);
+        editor.commit();
     }
 
+
     // Método para recuperar facturas
-    public List<Factura> getFacturas() {
-        // Obtener la cadena JSON de la lista de facturas
-        String json = sharedPreferences.getString(FACTURAS_KEY, "");
+    public List<Factura> getFacturasForUser(String email) {
+        String json = sharedPreferences.getString(FACTURAS_KEY + email, "");
         Type type = new TypeToken<List<Factura>>() {}.getType();
-        // Convertir la cadena JSON a una lista de facturas
         return gson.fromJson(json, type);
     }
+
 }

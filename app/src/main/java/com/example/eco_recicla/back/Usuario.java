@@ -40,6 +40,7 @@ public class Usuario {
         this.direccion = direccion;
         this.direccionAlternativa = direccionAlternativa;
         this.password = password;
+        this.ListadoDeFacturas = new ArrayList<>();
     }
     //getters y setters
     public TiposDeDocumentos getTipoDeDocuemnto() {

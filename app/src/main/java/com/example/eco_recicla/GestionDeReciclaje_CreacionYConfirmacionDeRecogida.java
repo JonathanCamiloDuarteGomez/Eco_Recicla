@@ -4,23 +4,22 @@ import static com.example.eco_recicla.VersionAdapter.nFactura;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TableLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
-
 import com.example.eco_recicla.back.DataProducto;
 import com.example.eco_recicla.back.ListadoDeProductos;
+import com.example.eco_recicla.back.Factura;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompatActivity {
     Button btnIrAAgregarSolicitudDeRecogida;
@@ -65,7 +64,10 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
         buttonCrearSolicitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Solicitud creada", Toast.LENGTH_SHORT).show();
+                //funcion que envie todos los datos a la factura,que me cree una nueva factura
+                vincularFactura();
+                //mostrar mensaje de solicitud creada
+                //Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Solicitud creada", Toast.LENGTH_SHORT).show();
                 Intent next = new Intent(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, MenuPrincipal.class);
                 startActivity(next);
                 finish();
@@ -138,5 +140,37 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
         rows.add(new String[]{" ", " ", " ", " ", " ", "Total:", " C:" + listadoDeProductos.calcularTotalCoins(), "$" + listadoDeProductos.calcularTotalAPagar()});
 
         return rows;
+    }
+
+    //funcion que me vincule una factura creada con el usuario
+     private void vincularFactura(){
+         Factura factura;
+         int nFactura =0;
+         //Agregar factura al usuario
+         UserManager userManager = new UserManager(this);
+         //obtener el usuario
+         Usuario usuario = userManager.getUsuario();
+         //crear factura
+         factura = new Factura(nFactura, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
+
+         //agregar factura al usuario
+         if (usuario != null) {
+             if (usuario.getListadoDeFacturas() == null) {
+                 usuario.setListadoDeFacturas(new ArrayList<>());
+             }
+             // Recuperar las facturas actuales del usuario
+             List<Factura> facturas = userManager.getFacturasForUser(usuario.getEmail());
+             if (facturas == null) {
+                 facturas = new ArrayList<>();
+             }
+             // Agregar la nueva factura a la lista
+             facturas.add(factura);
+
+         usuario.getListadoDeFacturas().add(factura);
+         //guardar el usuario con la nueva factura en el SharedPreferences
+         userManager.saveFacturasForUser(usuario.getEmail(), facturas);
+         //mostrar mensaje de factura creada
+         Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Factura Creada", Toast.LENGTH_LONG).show();
+        }
     }
 }

@@ -11,8 +11,8 @@ public class Factura {
     private Integer idFactura;
     private Integer idUsuario;
     private String nombreUsuario;
-    private Empresa nombreEmpresa;
-    private Empresa nombreConductor;
+    private String  nombreEmpresa; //Empresa, la empresa no se va a implementar aun.
+    private String nombreConductor;
     private String placaVehiculo;
     private String fechaDeRecogida;
     private String horaDeRecogida;
@@ -21,7 +21,7 @@ public class Factura {
     private Float totalCoins;
     private Float totalValor;
 
-    public Factura(Integer idFactura, Integer idUsuario, String nombreUsuario, Empresa nombreEmpresa, Empresa nombreConductor, String placaVehiculo, String fechaDeRecogida, String horaDeRecogida, String direccionDeRecogida, List<DataProducto> listaDeObjetos) {
+    public Factura(Integer idFactura, Integer idUsuario, String nombreUsuario, String nombreEmpresa, String nombreConductor, String placaVehiculo, String fechaDeRecogida, String horaDeRecogida, String direccionDeRecogida, List<DataProducto> listaDeObjetos) {
         this.idFactura = idFactura;
         this.idUsuario = idUsuario;
         this.nombreUsuario = nombreUsuario;
@@ -75,19 +75,19 @@ public class Factura {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Empresa getNombreEmpresa() {
+    public String getNombreEmpresa() {
         return nombreEmpresa;
     }
 
-    public void setNombreEmpresa(Empresa nombreEmpresa) {
+    public void setNombreEmpresa(String nombreEmpresa) {
         this.nombreEmpresa = nombreEmpresa;
     }
 
-    public Empresa getNombreConductor() {
+    public String getNombreConductor() {
         return nombreConductor;
     }
 
-    public void setNombreConductor(Empresa nombreConductor) {
+    public void setNombreConductor(String nombreConductor) {
         this.nombreConductor = nombreConductor;
     }
 
