@@ -2,12 +2,18 @@ package com.example.eco_recicla;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.eco_recicla.back.Factura;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -46,11 +52,21 @@ public class HistorialActivity extends AppCompatActivity {
 
     private void initializeData() {
         versionList = new ArrayList<>();
-        // Add versions to the list
-        versionList.add(new Version("Factura #1", "Camilo", "Calle 85 #25-36 sur", "Antonio Peres", "ABC123"));
-        versionList.add(new Version("Factura #2", "Camilo", "Calle 85 #25-36 sur", "Antonio Peres", "ABC123"));
-        versionList.add(new Version("Factura #3", "Camilo", "Calle 85 #25-36 sur", "Antonio Peres", "ABC123"));
-        versionList.add(new Version("Factura #4", "Camilo", "Calle 85 #25-36 sur", "Antonio Peres", "ABC123"));
-        versionList.add(new Version("Factura #5", "Camilo", "Calle 85 #25-36 sur", "Antonio Peres", "ABC123"));
+
+        //Agregar factura al usuario
+        UserManager userManager = new UserManager(this);
+        //obtener el usuario
+        Usuario usuario = userManager.getUsuario();
+        //traer el email del usuario
+        String email = usuario.getEmail();
+        //traer las facturas del usuario
+        List<Factura> facturas = userManager.getFacturasForUser(email);
+        //recorrer las facturas
+        for (Factura factura : facturas){
+            //agregar las facturas del usuario a la lista
+            versionList.add(new Version("Factura #"+factura.getIdFactura(), factura.getNombreEmpresa(), factura.getDireccionDeRecogida(),  factura.getNombreConductor(), factura.getPlacaVehiculo()));
+        }
+
+
     }
 }

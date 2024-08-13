@@ -18,8 +18,7 @@ public class UserManager {
 
     // Claves utilizadas para almacenar y recuperar datos
     private static final String FACTURAS_KEY = "facturas";
-    //private static final String KEY_EMAIL = "email";
-    //private static final String KEY_PASSWORD = "password";
+    private static int nFactura = 1;
 
     // Variables de instancia
     private SharedPreferences sharedPreferences;
@@ -131,5 +130,9 @@ public class UserManager {
         Type type = new TypeToken<List<Factura>>() {}.getType();
         return gson.fromJson(json, type);
     }
-
+    // Método para incrementar el contador de facturas
+    public static int incrementFactura() {
+        nFactura++;
+        return nFactura;
+    }
 }

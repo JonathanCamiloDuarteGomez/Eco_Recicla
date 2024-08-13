@@ -145,11 +145,14 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
     //funcion que me vincule una factura creada con el usuario
      private void vincularFactura(){
          Factura factura;
-         int nFactura =0;
+         int nFactura;
+
          //Agregar factura al usuario
          UserManager userManager = new UserManager(this);
          //obtener el usuario
          Usuario usuario = userManager.getUsuario();
+         //incrementar el contador de facturas
+         nFactura = userManager.incrementFactura();
          //crear factura
          factura = new Factura(nFactura, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
 
@@ -164,7 +167,7 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
                  facturas = new ArrayList<>();
              }
              // Agregar la nueva factura a la lista
-             facturas.add(factura);
+             facturas.add(factuConfirmacion ra);
 
          usuario.getListadoDeFacturas().add(factura);
          //guardar el usuario con la nueva factura en el SharedPreferences
