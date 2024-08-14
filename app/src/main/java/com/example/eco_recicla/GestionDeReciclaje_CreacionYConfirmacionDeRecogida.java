@@ -167,7 +167,7 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
                  facturas = new ArrayList<>();
              }
              // Agregar la nueva factura a la lista
-             facturas.add(factuConfirmacion ra);
+             facturas.add(factura);
 
          usuario.getListadoDeFacturas().add(factura);
          //guardar el usuario con la nueva factura en el SharedPreferences
