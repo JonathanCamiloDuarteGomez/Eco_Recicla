@@ -83,4 +83,15 @@
         android:padding="16dp"
         />
 
+    <TextView
+        android:id="@+id/txtResultados"
+        android:layout_width="371dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="40dp"
+        android:text="Resultados del map"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buttonBack" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
