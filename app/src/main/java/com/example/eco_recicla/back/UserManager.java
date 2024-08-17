@@ -135,4 +135,57 @@ public class UserManager {
         nFactura++;
         return nFactura;
     }
+    // Método para actualizar la información del usuario actual
+    public void updateUser(Usuario updatedUsuario) {
+        // Recuperar el correo electrónico del usuario actual
+        String email = getCurrentUserEmail();
+
+        if (email != null) {
+            // Recuperar el mapa de usuarios
+            Map<String, Usuario> users = getUsers();
+
+            // Buscar el usuario actual
+            Usuario usuario = users.get(email);
+
+            if (usuario != null) {
+                // Actualizar la información del usuario
+                usuario.setTelefono(updatedUsuario.getTelefono());
+                usuario.setDireccion(updatedUsuario.getDireccion());
+                usuario.setDireccionAlternativa(updatedUsuario.getDireccionAlternativa());
+
+                // Guardar el usuario actualizado en el mapa
+                users.put(email, usuario);
+
+                // Guardar el mapa de usuarios actualizado en preferencias compartidas
+                saveUsers(users);
+            }
+        }
+    }
+    //Método para actualizar los Coins del usuario actual
+    // Método para actualizar la información del usuario actual
+    public void updateCoins(Usuario updatedUsuario) {
+        // Recuperar el correo electrónico del usuario actual
+        String email = getCurrentUserEmail();
+
+        if (email != null) {
+            // Recuperar el mapa de usuarios
+            Map<String, Usuario> users = getUsers();
+
+            // Buscar el usuario actual
+            Usuario usuario = users.get(email);
+
+            if (usuario != null) {
+                // Actualizar la información del usuario
+                usuario.setCoins(updatedUsuario.getCoins());
+
+                // Guardar el usuario actualizado en el mapa
+                users.put(email, usuario);
+
+                // Guardar el mapa de usuarios actualizado en preferencias compartidas
+                saveUsers(users);
+            }
+        }
+    }
+
+
 }

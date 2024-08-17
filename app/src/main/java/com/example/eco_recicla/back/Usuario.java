@@ -19,6 +19,7 @@ public class Usuario {
     private String direccion;
     private String direccionAlternativa;
     private String password;
+    private String password1;
     private ArrayList<Factura> ListadoDeFacturas;
     private Integer coins;
     private HashMap<CategoriasDeReciclaje,Integer> mapEstadisticas;
@@ -29,7 +30,7 @@ public class Usuario {
         this.password = password;
     }
 
-    public Usuario(TiposDeDocumentos tipoDeDocuemnto, Integer idUsuario, String nombre, String apellido, Integer edad, String email, String telefono, String direccion, String direccionAlternativa, String password) {
+    public Usuario(TiposDeDocumentos tipoDeDocuemnto, Integer idUsuario, String nombre, String apellido, Integer edad, String email, String telefono, String direccion, String direccionAlternativa, String password,String password1) {
         this.tipoDeDocuemnto = tipoDeDocuemnto;
         this.idUsuario = idUsuario;
         this.nombre = nombre;
@@ -40,7 +41,10 @@ public class Usuario {
         this.direccion = direccion;
         this.direccionAlternativa = direccionAlternativa;
         this.password = password;
+        this.password1 = password1;
         this.ListadoDeFacturas = new ArrayList<>();
+        this.coins = 0;
+        this.mapEstadisticas = new HashMap<>();
     }
     //getters y setters
     public TiposDeDocumentos getTipoDeDocuemnto() {
@@ -168,5 +172,11 @@ public class Usuario {
     }
 
 
+    public String getPassword1() {
+        return password1;
+    }
 
+    public void setPassword1(String password1) {
+        this.password1 = password1;
+    }
 }

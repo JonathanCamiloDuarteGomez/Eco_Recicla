@@ -64,13 +64,21 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
         buttonCrearSolicitud.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //funcion que envie todos los datos a la factura,que me cree una nueva factura
-                vincularFactura();
-                //mostrar mensaje de solicitud creada
-                //Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Solicitud creada", Toast.LENGTH_SHORT).show();
-                Intent next = new Intent(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, MenuPrincipal.class);
-                startActivity(next);
-                finish();
+                //verificar que la confirmacion de direccion sea correcta
+                EditText editTextConfirmacionDeDireccion = findViewById(R.id.editTextConfirmacionDeDireccion);
+                String confirmacion = editTextConfirmacionDeDireccion.getText().toString().trim();
+                if (!confirmacion.equals(direccion)) {
+                    Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "La dirección ingresada es incorrecta", Toast.LENGTH_SHORT).show();
+                    return;
+                }else{
+                    //funcion que envie todos los datos a la factura,que me cree una nueva factura
+                    vincularFactura();
+                    //mostrar mensaje de solicitud creada
+                    //Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Solicitud creada", Toast.LENGTH_SHORT).show();
+                    Intent next = new Intent(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, MenuPrincipal.class);
+                    startActivity(next);
+                    finish();
+                }
             }
         });
         //traer datos de las anteriores pantallas
@@ -156,6 +164,11 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
          //crear factura
          factura = new Factura(nFactura, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
 
+         //enviar los Coins al usuario
+         Integer coins = Float.valueOf(listadoDeProductos.calcularTotalCoins()+usuario.getCoins()).intValue();
+         usuario.setCoins(coins);
+         userManager.updateCoins(usuario);
+
          //agregar factura al usuario
          if (usuario != null) {
              if (usuario.getListadoDeFacturas() == null) {
@@ -168,6 +181,9 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
              }
              // Agregar la nueva factura a la lista
              facturas.add(factura);
+
+
+
 
          usuario.getListadoDeFacturas().add(factura);
          //guardar el usuario con la nueva factura en el SharedPreferences

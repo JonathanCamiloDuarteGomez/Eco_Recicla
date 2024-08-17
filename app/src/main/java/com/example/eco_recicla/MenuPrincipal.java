@@ -81,7 +81,9 @@ public class MenuPrincipal extends AppCompatActivity {
         Usuario usuario = UserManager.getUsuario();
         if (usuario != null) {
             TextView txtBienvenida = findViewById(R.id.txtBienvenida);
+            TextView txtCoins = findViewById(R.id.txtCoins);
             txtBienvenida.setText("Bienvenido \n"+"\n"+usuario.getNombre()+" "+usuario.getApellido());
+            txtCoins.setText("Coins = "+usuario.getCoins());
         }
 
     }

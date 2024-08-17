@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -24,6 +25,8 @@ import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
 import com.example.eco_recicla.Enums.TiposDeDocumentos;
 import com.example.eco_recicla.back.DataProducto;
 import com.example.eco_recicla.back.ListadoDeProductos;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -54,13 +57,21 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_de_reciclaje_agregar_objeto);
 
+        //Agregar factura al usuario
+        UserManager userManager = new UserManager(this);
+        //obtener el usuario
+        Usuario usuario = userManager.getUsuario();
         btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
-        btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = "Direccion 1";direcciones[2] = "Direccion 2";
+        //mostrar los datos personales del usuario
+        mostrarDatosPersonales(usuario);
+        btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = usuario.getDireccion();direcciones[2] = usuario.getDireccionAlternativa();
 
         //inicializar variables
         listadoDeProductos = new ListadoDeProductos();
@@ -263,6 +274,8 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         grupo = "";
         tipo = "";
         kg = 0.0F;
+        item = null;
+        producto= null;
     }
 
     private ArrayList<String[]> getProducto() {
@@ -288,7 +301,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             if (!direccionSeleccionada.equals("Seleccione Direccion") &&
                     !grupoSeleccionado.equals("Seleccione la Categoria")&& !editText.getText().toString().equals("")
                     && !tipoSeleccionado.equals("Seleccione la Subcategoria")
-                ) {
+            ) {
 
                 // Verificar cuál spinner tiene la información seleccionada
                 direccion = spinnerSeleccionDeDireccion.getSelectedItem().toString();
@@ -312,8 +325,18 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         }
     }
 
+    //metodo para mostrar los datos personales del usuario
+    private void mostrarDatosPersonales(Usuario usuario){
+        //cc,nombre,telefono
+        TextView cc = (TextView) findViewById(R.id.TextViewNumIdentificacion1);
+        TextView nombre = (TextView) findViewById(R.id.TextViewNombreCompleto);
+        TextView telefono = (TextView) findViewById(R.id.TextViewTelefonoCelular);
+        cc.setText("CC "+usuario.getIdUsuario().toString());
+        nombre.setText("Nombre completo: "+usuario.getNombre()+" "+usuario.getApellido());
+        telefono.setText("Teléfono : "+usuario.getTelefono());
+    }
+
 
 
 }
-
 

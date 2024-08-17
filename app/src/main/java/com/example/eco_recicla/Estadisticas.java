@@ -70,29 +70,10 @@ public class Estadisticas extends AppCompatActivity {
         for (CategoriasDeReciclaje categoria : mapEstadisticas.keySet()) {
             Float kg = mapEstadisticas.get(categoria);
             resultadosDelFiltro.append("Categoria: " + categoria.name() + ", kg: " + kg + "\n");
-            // Si deseas agregar la fila a una tabla, puedes descomentar la siguiente línea
-            // agregarFilaATabla(categoria.name(), kg);
         }
     }
 
-    private void agregarFilaATabla(String name, Float kg) {
-        TableRow tableRow = new TableRow(this);
-        CategoriasDeReciclaje categoria ;
-        categoria = CategoriasDeReciclaje.valueOf(name);
 
-        TextView textViewCategoria = new TextView(this);
-        textViewCategoria.setText(categoria.name());
-        textViewCategoria.setPadding(16, 16, 16, 16);
-
-        TextView textViewKg = new TextView(this);
-        textViewKg.setText(kg + " kg");
-        textViewKg.setPadding(16, 16, 16, 16);
-
-        tableRow.addView(textViewCategoria);
-        tableRow.addView(textViewKg);
-
-        tableLayout.addView(tableRow);
-    }
 
     private void clearData() {
         SharedPreferences waterPrefs = getSharedPreferences("DataP", MODE_PRIVATE);

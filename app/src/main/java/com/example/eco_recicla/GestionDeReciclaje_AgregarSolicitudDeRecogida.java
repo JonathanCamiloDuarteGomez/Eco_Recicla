@@ -52,11 +52,11 @@ public class GestionDeReciclaje_AgregarSolicitudDeRecogida extends AppCompatActi
         btnCancelar = findViewById(R.id.btnCancelar);
         btnIrACreacionConfirmacion = findViewById(R.id.btnIrACreacionConfirmacion);
         spinnerSeleccionDeEmpresa = findViewById(R.id.spinnerSeleccionDeEmpresa);
-        nombreEmpresas[0] = "Seleccione Empresa";nombreEmpresas[1] = "Empresa 1";nombreEmpresas[2] = "Empresa 2";
+        nombreEmpresas[0] = "Seleccione Empresa";nombreEmpresas[1] = "Recicloplas S.A";nombreEmpresas[2] = "Lito S.A.S";
         spinnerPlacaVehiculo = findViewById(R.id.spinnerPlacaVehiculo);
-        nombreVehiculos[0] = "Seleccione Vehículo";nombreVehiculos[1] = "Vehículo 1";nombreVehiculos[2] = "Vehículo 2";
+        nombreVehiculos[0] = "Seleccione Vehículo";nombreVehiculos[1] = " CVD 152";nombreVehiculos[2] = " DFT 256";
         spinnerConductor = findViewById(R.id.spinnerConductor);
-        nombreConductores[0] = "Seleccione Conductor";nombreConductores[1] = "Conductor 1";nombreConductores[2] = "Conductor 2";
+        nombreConductores[0] = "Seleccione Conductor";nombreConductores[1] = " Maria Fernandez";nombreConductores[2] = " Pedro Linares";
         empresaSeleccionada = "";vehiculoSeleccionado = "";conductorSeleccionado = "";date = "";time = "";
 
         //Obtener el Intent que inició esta actividad
