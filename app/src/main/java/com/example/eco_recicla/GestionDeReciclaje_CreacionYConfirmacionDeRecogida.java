@@ -155,16 +155,16 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
     //funcion que me vincule una factura creada con el usuario
      private void vincularFactura(){
          Factura factura;
-         int nFactura;
+         int nFactura1;
 
          //Agregar factura al usuario
          UserManager userManager = new UserManager(this);
          //obtener el usuario
          Usuario usuario = userManager.getUsuario();
          //incrementar el contador de facturas
-         nFactura = incrementFactura(userManager);
+         nFactura1 = incrementFactura(userManager);
          //crear factura
-         factura = new Factura(nFactura, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
+         factura = new Factura(nFactura1, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
 
          //enviar los Coins al usuario
          Integer coins = Float.valueOf(listadoDeProductos.calcularTotalCoins()+usuario.getCoins()).intValue();
@@ -197,7 +197,7 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
     // Método para incrementar el contador de facturas
     public int incrementFactura(UserManager userManager) {
         int nFactura1 = userManager.getNFactura();  // Recupera el valor actual de nFactura
-        nFactura += 1;
+        nFactura1 += 1;
         userManager.saveNFactura(nFactura1); // Guarda el nuevo valor
         return nFactura1;
     }
