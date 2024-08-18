@@ -7,6 +7,8 @@ import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Map;
 
 public class ListadoDeProductos implements Serializable {
     private ArrayList<DataProducto> listaDeProductos;
@@ -86,6 +88,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
 
                         }
 
@@ -108,6 +111,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         default:
                             System.out.println("Subcategoría no válida para VIDRIO");
@@ -128,6 +132,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "HDPE (Polietileno de Alta Densidad)":{
                             producto.setIdProducto(5);
@@ -140,6 +145,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "PVC (Policloruro de Vinilo)":{
                             producto.setIdProducto(6);
@@ -152,6 +158,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "LDPE (Polietileno de Baja Densidad)":{
                             producto.setIdProducto(7);
@@ -164,10 +171,11 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "PP (Polipropileno)":{
                             producto.setIdProducto(8);
-                            producto.setNombre("PPSe");
+                            producto.setNombre("PPSE");
                             producto.setKg(kg);
                             producto.setValorKg(600);
                             producto.setCoinsKg(6);
@@ -176,6 +184,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         default:
                             System.out.println("Subcategoría no válida para PLASTICOS");
@@ -197,6 +206,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "Acero":{
                             producto.setIdProducto(10);
@@ -209,6 +219,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         default:
                             System.out.println("Subcategoría no válida para METALES");
@@ -229,6 +240,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         case "Electronica de consumo":{
                             producto.setIdProducto(12);
@@ -241,6 +253,7 @@ public class ListadoDeProductos implements Serializable {
                             producto.setCategoria(categoria);
                             producto.setSubCategoria(subCategoria);
                             listaDeProductos.add(producto);
+                            break;
                         }
                         default:
                             System.out.println("Subcategoría no válida para ELECTRONICOS");

@@ -1,5 +1,6 @@
 package com.example.eco_recicla.back;
 
+
 import android.content.Context;
 import android.content.SharedPreferences;
 
@@ -15,10 +16,10 @@ public class UserManager {
     private static final String PREF_NAME = "UserData";
     private static final String USERS_KEY = "users";
     private static final String CURRENT_USER_EMAIL = "current_user_email";
+    private static final String NFACTURA_KEY = "nFactura1";
 
     // Claves utilizadas para almacenar y recuperar datos
     private static final String FACTURAS_KEY = "facturas";
-    private static int nFactura = 1;
 
     // Variables de instancia
     private SharedPreferences sharedPreferences;
@@ -130,11 +131,17 @@ public class UserManager {
         Type type = new TypeToken<List<Factura>>() {}.getType();
         return gson.fromJson(json, type);
     }
-    // Método para incrementar el contador de facturas
-    public static int incrementFactura() {
-        nFactura++;
-        return nFactura;
+    // Método para guardar el valor de nFactura
+    public void saveNFactura(int nFactura) {
+        editor.putInt(NFACTURA_KEY, nFactura);
+        editor.apply();
     }
+
+    // Método para recuperar el valor de nFactura
+    public int getNFactura() {
+        return sharedPreferences.getInt(NFACTURA_KEY, 1); // 1 es el valor predeterminado si no existe
+    }
+
     // Método para actualizar la información del usuario actual
     public void updateUser(Usuario updatedUsuario) {
         // Recuperar el correo electrónico del usuario actual
@@ -162,7 +169,6 @@ public class UserManager {
         }
     }
     //Método para actualizar los Coins del usuario actual
-    // Método para actualizar la información del usuario actual
     public void updateCoins(Usuario updatedUsuario) {
         // Recuperar el correo electrónico del usuario actual
         String email = getCurrentUserEmail();

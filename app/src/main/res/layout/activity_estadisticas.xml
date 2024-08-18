@@ -5,93 +5,61 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/background"
     tools:context=".Estadisticas">
 
+    <!-- Botón de retroceso -->
     <ImageButton
-        android:id="@+id/buttonBack"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/buttonBack1"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:layout_margin="16dp"
         android:background="?attr/selectableItemBackgroundBorderless"
         android:src="@android:drawable/ic_menu_revert"
-        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="SpeakableTextPresentCheck" />
 
+    <!-- Título de la pantalla -->
     <TextView
         android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="1dp"
+        android:layout_marginTop="16dp"
         android:padding="16dp"
-        android:text="Datos Personales"
+        android:text="Estadísticas"
         android:textAlignment="center"
-        android:textSize="40dp"
+        android:textSize="34sp"
+        android:textColor="@color/white"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/myTableLayout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/buttonBack" />
+        app:layout_constraintTop_toBottomOf="@id/buttonBack1" />
 
-    <TableLayout
-        android:id="@+id/myTableLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:stretchColumns="*"
-        app:layout_constraintTop_toBottomOf="@id/textViewTitle"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/buttonClear"
-        android:padding="16dp"
-        >
-
-        <TableRow>
-            <TextView
-                android:text="email"
-                android:padding="10dp"
-                android:background="#EEEEEE"
-                android:textStyle="bold"
-                android:textAlignment="center" />
-
-            <TextView
-                android:text="Telefono"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:background="#EEEEEE" />
-            <TextView
-                android:text="Direccion"
-                android:padding="10dp"
-                android:textStyle="bold"
-                android:textAlignment="center"
-                android:background="#EEEEEE" />
-        </TableRow>
-
-    </TableLayout>
-
-
-    <Button
-        android:id="@+id/buttonClear"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Borrar Datos"
-        app:layout_constraintTop_toBottomOf="@id/myTableLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:padding="16dp"
-        />
-
+    <!-- Texto de resultados -->
     <TextView
         android:id="@+id/txtResultados"
-        android:layout_width="371dp"
-        android:layout_height="145dp"
-        android:layout_marginTop="40dp"
-        android:text="Resultados del map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="20dp"
+        android:text="Tabla de acomulación de kg por categoria"
+        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.072"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/buttonBack" />
+        app:layout_constraintTop_toBottomOf="@id/textViewTitle" />
+
+    <!-- Tabla de facturas -->
+    <TableLayout
+        android:id="@+id/tablaFactura1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:background="@color/colorPrimaryDark"
+        android:orientation="horizontal"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txtResultados" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

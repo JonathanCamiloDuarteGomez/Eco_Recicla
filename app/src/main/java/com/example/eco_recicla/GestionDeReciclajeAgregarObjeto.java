@@ -264,7 +264,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         //inicializar el producto
         DataProducto producto = new DataProducto();
         //agregar el producto a la lista de productos
-        listadoDeProductos.addProducto(producto,CategoriasDeReciclaje.valueOf(grupo.toUpperCase()),tipo,kg);
+        listadoDeProductos.addProducto(producto,CategoriasDeReciclaje.valueOf(grupo),tipo,kg);
         //agregar el producto a la tabla visual
         String[] item = new String[]{producto.getIdProducto().toString(),tipo,Float.toString(kg),producto.getValorKg().toString(),producto.getTotalValor().toString(),producto.getCoinsKg().toString(),listadoDeProductos.calcularTotalCoins().toString(),listadoDeProductos.calcularTotalAPagar().toString()};
         Log.i("Producto agregado a la lista de productos",listadoDeProductos.getListaDeProductos().get(0).toString()+" \n tamaño : "+listadoDeProductos.getListaDeProductos().size());
@@ -279,10 +279,6 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     }
 
     private ArrayList<String[]> getProducto() {
-        //rows.add(new String[]{"","","","","","","",""});
-        //rows.add(new String[]{"1","Cartón","40","500","20000","10","10","20000"});
-        //rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
-        //rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
         return rows;
     }
 
@@ -332,7 +328,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         TextView nombre = (TextView) findViewById(R.id.TextViewNombreCompleto);
         TextView telefono = (TextView) findViewById(R.id.TextViewTelefonoCelular);
         cc.setText("CC "+usuario.getIdUsuario().toString());
-        nombre.setText("Nombre completo: "+usuario.getNombre()+" "+usuario.getApellido());
+        nombre.setText("Nombre completo: "+usuario.getNombre()+usuario.getApellido());
         telefono.setText("Teléfono : "+usuario.getTelefono());
     }
 

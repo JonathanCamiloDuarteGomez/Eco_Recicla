@@ -128,6 +128,8 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
     private ArrayList<String[]> getProducto() {
         // Limpia las filas antes de agregar los productos
         rows.clear();
+        //ver la lista de productos que me llega de la anterior pantalla
+        //Log.i("Listado de productos",listadoDeProductos.getListaDeProductos().toString());
 
         // Itera sobre cada producto en la lista de productos
         for (DataProducto producto : listadoDeProductos.getListaDeProductos()) {
@@ -160,7 +162,7 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
          //obtener el usuario
          Usuario usuario = userManager.getUsuario();
          //incrementar el contador de facturas
-         nFactura = userManager.incrementFactura();
+         nFactura = incrementFactura(userManager);
          //crear factura
          factura = new Factura(nFactura, usuario.getIdUsuario(), usuario.getNombre(), empresa, conductor, placa,date,time,direccion,listadoDeProductos.getListaDeProductos());
 
@@ -192,4 +194,12 @@ public class GestionDeReciclaje_CreacionYConfirmacionDeRecogida extends AppCompa
          Toast.makeText(GestionDeReciclaje_CreacionYConfirmacionDeRecogida.this, "Factura Creada", Toast.LENGTH_LONG).show();
         }
     }
+    // Método para incrementar el contador de facturas
+    public int incrementFactura(UserManager userManager) {
+        int nFactura1 = userManager.getNFactura();  // Recupera el valor actual de nFactura
+        nFactura += 1;
+        userManager.saveNFactura(nFactura1); // Guarda el nuevo valor
+        return nFactura1;
+    }
+
 }
