@@ -35,3 +35,4 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
         GestionDeReciclaje_AgregarSolicitudDeRecogida activity = (GestionDeReciclaje_AgregarSolicitudDeRecogida) getActivity();
         activity.processDatePickerResult(year, month, dayOfMonth);
     }
+}
