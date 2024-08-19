@@ -137,6 +137,7 @@ public class Datos_Personales extends AppCompatActivity {
         adress2.setText(usuario.getDireccionAlternativa());
 
     }
+}
 
      /*
         //aquie en ves de crear un nuevo archivo de preferences, toca traer la informacion del usuario y con un set
