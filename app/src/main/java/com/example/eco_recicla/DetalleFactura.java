@@ -104,4 +104,4 @@ public class DetalleFactura extends AppCompatActivity {
             rows.add(new String[]{" ", " ", " ", " ", " ", "Total:", " C:" + totalCoins, "$" + totalPagar});
         }
 
-        return rows;
+        return rows;}}
