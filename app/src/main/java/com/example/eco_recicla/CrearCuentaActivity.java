@@ -1,4 +1,5 @@
 package com.example.eco_recicla;
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,6 +13,7 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 import com.example.eco_recicla.Enums.TiposDeDocumentos;
 import com.example.eco_recicla.back.UserManager;
@@ -36,7 +38,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crear_cuenta);
 
-
         // Inicialización de los elementos de la interfaz de usuario
         editTextIdentificacion = findViewById(R.id.EditTextIdentificacion1);
         editTextName = findViewById(R.id.EditTextName);
@@ -53,6 +54,8 @@ public class CrearCuentaActivity extends AppCompatActivity {
         btnIrAloginRegistrar = findViewById(R.id.btnIrAloginRegistrar);
         checkBoxTerms = findViewById(R.id.checkBoxTratoDatos);
         btnRegistrar = findViewById(R.id.btnRegistrar);
+
+
 
 
 
@@ -96,7 +99,6 @@ public class CrearCuentaActivity extends AppCompatActivity {
 
         // Configuración del botón para cambiar de pantalla
         cambioDePantalla(btnIrAloginRegistrar, MainActivity.class); //en la siguiente funcion se ingresa el boton y la clase hacia donde se va
-
 
         // Configuración del botón para registrar usuario
         btnRegistrar.setOnClickListener(new View.OnClickListener() {
@@ -151,38 +153,11 @@ public class CrearCuentaActivity extends AppCompatActivity {
         nombreBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                String email = editTextEmail.getText().toString();
-                String password = editTextPassword.getText().toString();
-
-
-                if(TextUtils.isEmpty(email)){
-                    Toast.makeText(CrearCuentaActivity.this,"Ingrese un Correo Electronico",Toast.LENGTH_SHORT).show();
-                } else if (!isValidEmail(email)) {
-                    Toast.makeText(CrearCuentaActivity.this,"Ingrese un Correo Electronico Valido",Toast.LENGTH_SHORT).show();
-                } else if (TextUtils.isEmpty(password)) {
-                    Toast.makeText(CrearCuentaActivity.this,"Ingrese una contraseña",Toast.LENGTH_SHORT).show();
-                } else if (!checkBoxTerms.isChecked()) {
-                    Toast.makeText(CrearCuentaActivity.this,"Debe aceptar terminos y condiciones",Toast.LENGTH_SHORT).show();
-                }else {
-                    registrarUsuario(email,password);
-                }
-
                 Intent next = new Intent(CrearCuentaActivity.this, clase);
                 startActivity(next);
             }
-
         });
     }
-        private boolean isValidEmail(CharSequence target) {
-            return (!TextUtils.isEmpty(target) && Patterns.EMAIL_ADDRESS.matcher(target).matches());
-        }
-
-        private void registrarUsuario(String email, String password) {
-            userManager.RegisterUser(email, password);
-            Toast.makeText(CrearCuentaActivity.this, "Registro exitoso", Toast.LENGTH_SHORT).show();
-            finish();
-        }
 
     // Método para validar el formato del correo electrónico
     private boolean isValidEmail(CharSequence target) {
@@ -207,4 +182,3 @@ public class CrearCuentaActivity extends AppCompatActivity {
         finish(); // Finaliza la actividad actual
     }
 }
-
