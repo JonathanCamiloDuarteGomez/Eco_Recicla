@@ -9,6 +9,9 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -17,16 +20,16 @@ public class MenuPrincipal extends AppCompatActivity {
     private TextView textviewDate;
 
     private String[] Tips= {
-            "Ahorra energía apagando las luces que no necesitas.",
-            "Desconecta los electrodomésticos que no estás usando.",
-            "Utiliza bombillas LED para reducir el consumo de energía.",
-            "Apaga tu computadora cuando no la estés usando.",
-            "Aprovecha la luz natural durante el día.",
-            "Mantén el refrigerador bien cerrado para ahorrar energía.",
+            "Reserva un espacio: Destina un lugar específico para depositar los materiales reciclables.",
+            "Separa los residuos: Clasifica los materiales según su tipo: papel y cartón, vidrio, plástico, metal, orgánico.",
+            "Limpia los envases: Antes de reciclar, enjuaga bien los envases para eliminar restos de comida o líquidos.",
+            "Aplasta y compacta: Para ahorrar espacio, aplasta las botellas de plástico y las latas de aluminio.",
+            "Reutiliza: Antes de reciclar, busca darle una segunda vida a algunos objetos, como frascos de vidrio o cajas de cartón.",
+            "Reduce y reutiliza: Antes de reciclar, trata de reducir la cantidad de residuos que generas y reutiliza los objetos siempre que sea posible.",
             "Usa el aire acondicionado con moderación.",
-            "Lava tu ropa con agua fría para ahorrar energía.",
-            "Revisa tus aparatos eléctricos para evitar fugas de energía.",
-            "Plancha tu ropa en una sola sesión para ahorrar energía."
+            "Compra productos reciclados: Al adquirir nuevos productos, busca aquellos hechos con materiales reciclados.",
+            "Educa a los demás: Difunde la importancia del reciclaje entre tus familiares y amigos."
+
     };
 
     @Override
@@ -71,6 +74,18 @@ public class MenuPrincipal extends AppCompatActivity {
         cambioDePantalla(btnDatosPersonales, MenuInformacionUsuario.class);
         cambioDePantalla(btnSalir, MainActivity.class);//cambiar a login
         //no olvidar reemplazar la clase pa donde se dirije, no son HistorialActivity
+
+        //cambiar el txt de bienvenida por el nombre del usuario
+        //Bienvenido \n \nPepito Perez
+        UserManager UserManager = new UserManager(this);
+        Usuario usuario = UserManager.getUsuario();
+        if (usuario != null) {
+            TextView txtBienvenida = findViewById(R.id.txtBienvenida);
+            TextView txtCoins = findViewById(R.id.txtCoins);
+            txtBienvenida.setText("Bienvenido \n"+"\n"+usuario.getNombre()+" "+usuario.getApellido());
+            txtCoins.setText("Coins = "+usuario.getCoins());
+        }
+
     }
 
     private void cambioDePantalla(ImageButton nombreBtn, final Class<?> clase) {

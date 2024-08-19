@@ -46,12 +46,19 @@ public class TableDynamic {
         txtCell.setTextSize(12);
         txtCell.setTextColor(context.getResources().getColor(android.R.color.white));
     }
+    private void newCellH() {
+        txtCell = new TextView(context);
+        txtCell.setGravity(Gravity.CENTER);
+        txtCell.setTextSize(14);
+        txtCell.setBackgroundColor(context.getResources().getColor(android.R.color.black));
+        txtCell.setTextColor(context.getResources().getColor(android.R.color.white));
+    }
 
     private void createHeader() {
         indexColumn = 0;
         newRow();
         while (indexColumn < header.length) {
-            newCell();
+            newCellH();
             txtCell.setText(header[indexColumn]);
             tableRow.addView(txtCell, newTableRowParamas());
             indexColumn++;
@@ -68,7 +75,6 @@ public class TableDynamic {
          */
         Log.d("TableDynamic", "addItems: " + item.length);
         data.add(item);
-        Log.d("TableDynamic", "El problema no es el add");
         indexColumn = 0;
         newRow();
         while (indexColumn < header.length) {
@@ -119,4 +125,9 @@ public class TableDynamic {
     public int sizeData() {
         return data.size();
     }
+
+    public int sizeData() {
+        return data.size();
+    }
 }
+

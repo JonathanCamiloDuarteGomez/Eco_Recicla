@@ -1,8 +1,5 @@
 package com.example.eco_recicla;
 
-import static androidx.core.content.ContextCompat.startActivity;
-
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -13,7 +10,8 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.eco_recicla.PickerFragment.UserManager;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -28,16 +26,15 @@ public class MainActivity extends AppCompatActivity {
     private UserManager userManager;
 
     private String[] Tips = {
-            "Ahorra energía apagando las luces que no necesitas.",
-            "Desconecta los electrodomésticos que no estás usando.",
-            "Utiliza bombillas LED para reducir el consumo de energía.",
-            "Apaga tu computadora cuando no la estés usando.",
-            "Aprovecha la luz natural durante el día.",
-            "Mantén el refrigerador bien cerrado para ahorrar energía.",
+            "Reserva un espacio: Destina un lugar específico para depositar los materiales reciclables.",
+            "Separa los residuos: Clasifica los materiales según su tipo: papel y cartón, vidrio, plástico, metal, orgánico.",
+            "Limpia los envases: Antes de reciclar, enjuaga bien los envases para eliminar restos de comida o líquidos.",
+            "Aplasta y compacta: Para ahorrar espacio, aplasta las botellas de plástico y las latas de aluminio.",
+            "Reutiliza: Antes de reciclar, busca darle una segunda vida a algunos objetos, como frascos de vidrio o cajas de cartón.",
+            "Reduce y reutiliza: Antes de reciclar, trata de reducir la cantidad de residuos que generas y reutiliza los objetos siempre que sea posible.",
             "Usa el aire acondicionado con moderación.",
-            "Lava tu ropa con agua fría para ahorrar energía.",
-            "Revisa tus aparatos eléctricos para evitar fugas de energía.",
-            "Plancha tu ropa en una sola sesión para ahorrar energía."
+            "Compra productos reciclados: Al adquirir nuevos productos, busca aquellos hechos con materiales reciclados.",
+            "Educa a los demás: Difunde la importancia del reciclaje entre tus familiares y amigos."
     };
 
     @Override
@@ -91,9 +88,12 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 if (userManager.loginUser(email, password)) {
-                    Intent intent = new Intent(MainActivity.this, Consejos.class);
-                    startActivity(intent);
-                    finish();
+                    Usuario usuario = userManager.getUsuario();
+                    if(usuario != null){
+                        Intent intent = new Intent(MainActivity.this, Consejos.class);
+                        startActivity(intent);
+                        finish();
+                    }
                 } else {
                     Toast.makeText(MainActivity.this, "Email o Password Invalidos", Toast.LENGTH_SHORT).show();
                 }

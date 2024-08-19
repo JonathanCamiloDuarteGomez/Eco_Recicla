@@ -68,6 +68,7 @@
                 android:layout_marginTop="12dp"
                 android:background="@android:color/white"
                 android:hint="Número ID*"
+                android:inputType="number"
                 android:textAlignment="center"/>
 
 
@@ -94,6 +95,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginTop="12dp"
+                android:inputType="number"
                 android:background="@android:color/white"
                 android:hint="Edad*"
                 android:textAlignment="center" />
@@ -160,7 +162,7 @@
         android:textAlignment="center" />
 
     <EditText
-        android:id="@+id/EditTextContras_Repeticion"
+        android:id="@+id/EditTextContras_Repeticion1"
         android:layout_width="316dp"
         android:layout_height="48dp"
         android:layout_below="@+id/EditTextContrasena"
@@ -175,7 +177,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_below="@+id/EditTextContras_Repeticion"
+        android:layout_below="@+id/EditTextContras_Repeticion1"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
         android:layout_marginStart="85dp"

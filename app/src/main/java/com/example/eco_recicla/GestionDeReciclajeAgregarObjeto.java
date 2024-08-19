@@ -1,6 +1,7 @@
 package com.example.eco_recicla;
 
 import android.content.Intent;
+import android.nfc.Tag;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -11,9 +12,22 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.TableLayout;
+import android.widget.TextView;
 import android.widget.Toast;
+
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.graphics.Insets;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
+
 import com.example.eco_recicla.Enums.CategoriasDeReciclaje;
+import com.example.eco_recicla.Enums.TiposDeDocumentos;
+import com.example.eco_recicla.back.DataProducto;
+import com.example.eco_recicla.back.ListadoDeProductos;
+import com.example.eco_recicla.back.UserManager;
+import com.example.eco_recicla.back.Usuario;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -23,7 +37,6 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     private String[] header;
     private ArrayList<String[]> rows;
     private Button btnSiguiente;
-
     private Button btnIrAMenuPrincipal;
     TableDynamic tableDynamic;
     private TableLayout tablaObjetosAgregados;
@@ -39,6 +52,10 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     //opciones del spinner
     String[]direcciones = new String[3];
 
+    //
+    private ListadoDeProductos listadoDeProductos ;
+
+
 
 
 
@@ -47,8 +64,17 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_gestion_de_reciclaje_agregar_objeto);
 
+        //Agregar factura al usuario
+        UserManager userManager = new UserManager(this);
+        //obtener el usuario
+        Usuario usuario = userManager.getUsuario();
         btnSiguiente = (Button) findViewById(R.id.btnSiguiente);
-        btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = "Direccion 1";direcciones[2] = "Direccion 2";
+        //mostrar los datos personales del usuario
+        mostrarDatosPersonales(usuario);
+        btnIrAMenuPrincipal = (Button) findViewById(R.id.btnIrAMenuPrincipal);direcciones[0] = "Seleccione Direccion";direcciones[1] = usuario.getDireccion();direcciones[2] = usuario.getDireccionAlternativa();
+
+        //inicializar variables
+        listadoDeProductos = new ListadoDeProductos();
 
         direccion = "";
         grupo = "";
@@ -70,19 +96,18 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                     if (tableDynamic != null && tableDynamic.sizeData() != 0) {
                         Intent next = new Intent(GestionDeReciclajeAgregarObjeto.this, GestionDeReciclaje_AgregarSolicitudDeRecogida.class);
 
-                        //enviar datos capturados a la siguiente pantalla
-                        // Añadir datos al Intent
-                        next.putExtra("direccion", direccion.toString());
-                        next.putExtra("grupo", grupo.toString());
-                        next.putExtra("tipo", tipo.toString());
-                        next.putExtra("kg", Float.toString(kg));
+                        next.putExtra("direccion", direccion);
+                        next.putExtra("grupo", grupo);
+                        next.putExtra("tipo", tipo);
+                        next.putExtra("kg", kg);
+                        next.putExtra("listadoDeProductos", listadoDeProductos);
 
                         startActivity(next);
                         finish();
                     }
                 } catch (Exception e) {
                     Log.e("Error", "Error al procesar el botón Siguiente", e);
-                    Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Ingrese almenos un Objeto", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Ingrese al menos un Objeto", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -90,9 +115,8 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 
-
         //Configuracion tabla de objetos agregados
-        header = new String[]{"Id Producto","Nombre","Kg","Valor Kg ","$ Valor","Coins","Total Coins","Total"};
+        header = new String[]{" Id Producto | "," Nombre | "," Kg | "," Valor Kg | "," $ Valor | "," Coins*Kg | "," Total Coins | "," Total  "};
         tablaObjetosAgregados=(TableLayout) findViewById(R.id.tablaAgregarObjeto);
         rows = new ArrayList<>();
 
@@ -101,7 +125,6 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
         tableDynamic = new TableDynamic(tablaObjetosAgregados,getApplicationContext());
         tableDynamic.addHeader(header);
         //## se necesita encontrar la forma de no tenerque llamar a addData  y que la tabla se cree una sola vez
-
         //tableDynamic.addData(getProducto());
 
 
@@ -109,12 +132,15 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
         agregarObjeto.setOnClickListener(new View.OnClickListener(){
             public void onClick (View v){
+
+                //verificar si la tabla esta creada
                 if(!flag){//si la tabla no esta creada
 
                     if(obtenerInformacionSegunSpinner()==true){//si la informacion es correcta
                         tableDynamic.addData(getProducto());
                         tableDynamic.linearColor();
                         saveItem();
+
                         flag = true;
                         Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados correctamente", Toast.LENGTH_SHORT).show();
                     }else if(obtenerInformacionSegunSpinner()==false) {//si la informacion es incorrecta
@@ -122,7 +148,16 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                         flag = false;
                     }
                 }else if(flag==true){//si la tabla esta creada
-                    saveItem();
+                    if(obtenerInformacionSegunSpinner()==true) {//si la informacion es correcta
+                        saveItem();
+
+                        flag = true;
+                        Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados correctamente", Toast.LENGTH_SHORT).show();
+                    }else if(obtenerInformacionSegunSpinner()==false) {//si la informacion es incorrecta
+                        Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Datos ingresados incorrectamente", Toast.LENGTH_SHORT).show();
+                        flag = false;
+                    }
+
                 }
             }
         });
@@ -161,21 +196,13 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 Log.i("Tipo de documento", "Seleccione Tipo de documento");
             }
         });
-
-        //configuracion de Spinners
-        spinnerSeleccionDeDireccion = (Spinner) findViewById(R.id.spinnerSeleccionDeDireccion);
-        spinnerGrupo = (Spinner) findViewById(R.id.spinnerGrupo1);//categorias de reciclaje
-        spinnerTipo = (Spinner) findViewById(R.id.spinnerTipo1);//subcategorias de reciclaje
-
-        //llama a categoria funcion
-        ConfiguracionCategoriasDeReciclaje();
     }
     private void ConfiguracionCategoriasDeReciclaje(){
         //categorias de reciclaje
         String [] categorias = new String[CategoriasDeReciclaje.values().length+1];
         categorias[0] = "Seleccione la Categoria";
         for(int i=0; i<CategoriasDeReciclaje.values().length; i++){
-            categorias[i + 1] = CategoriasDeReciclaje.values()[i].name().replace("_", " y ");
+            categorias[i + 1] = CategoriasDeReciclaje.values()[i].name();
         }
         ArrayAdapter<String> categoryAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, categorias);
         categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
@@ -186,6 +213,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 if (position != 0) {
                     CategoriasDeReciclaje selectedCategory = CategoriasDeReciclaje.values()[position - 1];
+                    grupo = selectedCategory.name();
                     configuracionSppinerTipo(selectedCategory);
                 } else {
                     spinnerTipo.setAdapter(null);
@@ -200,8 +228,6 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
     }
-
-
 
     private void configuracionSppinerTipo(CategoriasDeReciclaje categoria){
         //subcategorias de reciclaje
@@ -219,6 +245,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
                 if (position != 0) {
                     String selectedSubcategory = subcategories.get(position);
                     List<String> examples = categoria.getSubcategories().get(selectedSubcategory);
+                    tipo =selectedSubcategory;
                     Toast.makeText(GestionDeReciclajeAgregarObjeto.this, "Subcategoría seleccionada: " + selectedSubcategory + ", Ejemplos: " + examples, Toast.LENGTH_LONG).show();
                 }
             }
@@ -234,16 +261,24 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
     //este lo voy a usar cuando se agrega un producto a una factura especifica
     public void saveItem(){
 
-        String[] item = new String[]{"3",tipo,Float.toString(kg),"1500","15000","100","1000","15000"};
+        //inicializar el producto
+        DataProducto producto = new DataProducto();
+        //agregar el producto a la lista de productos
+        listadoDeProductos.addProducto(producto,CategoriasDeReciclaje.valueOf(grupo),tipo,kg);
+        //agregar el producto a la tabla visual
+        String[] item = new String[]{producto.getIdProducto().toString(),tipo,Float.toString(kg),producto.getValorKg().toString(),producto.getTotalValor().toString(),producto.getCoinsKg().toString(),listadoDeProductos.calcularTotalCoins().toString(),listadoDeProductos.calcularTotalAPagar().toString()};
+        Log.i("Producto agregado a la lista de productos",listadoDeProductos.getListaDeProductos().get(0).toString()+" \n tamaño : "+listadoDeProductos.getListaDeProductos().size());
+        Log.i("Producto traido desde la clase DataProducto",producto.toString());
         tableDynamic.addItems(item);
+        //limpiar los campos
+        grupo = "";
+        tipo = "";
+        kg = 0.0F;
+        item = null;
+        producto= null;
     }
 
     private ArrayList<String[]> getProducto() {
-
-        //rows.add(new String[]{"","","","","","","",""});
-        //rows.add(new String[]{"1","Cartón","40","500","20000","10","10","20000"});
-        //rows.add(new String[]{"2","Plástico","55","550","30250","825","835","50250"});
-        //rows.add(new String[]{" "," "," "," "," ","Total :"," C:835 ","$50250"});
         return rows;
     }
 
@@ -262,7 +297,7 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             if (!direccionSeleccionada.equals("Seleccione Direccion") &&
                     !grupoSeleccionado.equals("Seleccione la Categoria")&& !editText.getText().toString().equals("")
                     && !tipoSeleccionado.equals("Seleccione la Subcategoria")
-                ) {
+            ) {
 
                 // Verificar cuál spinner tiene la información seleccionada
                 direccion = spinnerSeleccionDeDireccion.getSelectedItem().toString();
@@ -284,6 +319,17 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
             Log.e("Error", "Error al obtener información del spinner", e);
             return false;
         }
+    }
+
+    //metodo para mostrar los datos personales del usuario
+    private void mostrarDatosPersonales(Usuario usuario){
+        //cc,nombre,telefono
+        TextView cc = (TextView) findViewById(R.id.TextViewNumIdentificacion1);
+        TextView nombre = (TextView) findViewById(R.id.TextViewNombreCompleto);
+        TextView telefono = (TextView) findViewById(R.id.TextViewTelefonoCelular);
+        cc.setText("CC "+usuario.getIdUsuario().toString());
+        nombre.setText("Nombre completo: "+usuario.getNombre()+usuario.getApellido());
+        telefono.setText("Teléfono : "+usuario.getTelefono());
     }
 
 

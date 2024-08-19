@@ -84,8 +84,10 @@ public class VersionAdapter extends RecyclerView.Adapter<VersionAdapter.VersionV
                 public void onClick(View v) {
                     Context context = v.getContext();
                     Intent intent = new Intent(context, DetalleFactura.class);
-                    context.startActivity(intent);
                     nFactura =  bill_number.getText().toString()  ;
+                    intent.putExtra("bill_number", bill_number.getText().toString());
+                    context.startActivity(intent);
+
                 }
             });
         }

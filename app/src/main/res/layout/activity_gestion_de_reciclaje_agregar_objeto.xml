@@ -57,7 +57,7 @@
         android:textStyle="bold" />
 
     <TextView
-        android:id="@+id/TextViewNumIdentificacion"
+        android:id="@+id/TextViewNumIdentificacion1"
         style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -79,7 +79,7 @@
         style="@style/Widget.Material3.MaterialTimePicker.Display.HelperText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/TextViewNumIdentificacion"
+        android:layout_below="@id/TextViewNumIdentificacion1"
         android:layout_marginLeft="15dp"
         android:layout_marginTop="10dp"
         android:layout_marginRight="15dp"
