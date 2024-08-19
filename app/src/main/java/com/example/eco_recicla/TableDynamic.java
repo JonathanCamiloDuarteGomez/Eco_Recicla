@@ -126,8 +126,5 @@ public class TableDynamic {
         return data.size();
     }
 
-    public int sizeData() {
-        return data.size();
-    }
 }
 
