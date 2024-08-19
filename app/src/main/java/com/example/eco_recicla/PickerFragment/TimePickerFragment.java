@@ -39,4 +39,5 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
             activity.processTimePickerResult(hourOfDay, minute);
         }
     }
+}
 
