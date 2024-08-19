@@ -9,7 +9,9 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.eco_recicla.back.UserManager;
 import com.example.eco_recicla.back.Usuario;
 
@@ -94,35 +96,7 @@ public class Datos_Personales extends AppCompatActivity {
                 finish();
             }
         });
-
     }
-    private void PersonalData(){
-        String email = EditTextEmail1.getText().toString();
-        String telefono = EditTextTelefono.getText().toString();
-        String adress = EditTextAdress1.getText().toString();
-
-        if(email.isEmpty() || telefono.isEmpty() || adress.isEmpty()){
-            Toast.makeText(this,"Complete los Campos",Toast.LENGTH_SHORT).show();
-            return;
-        }
-
-        //guardar datos en sharepreference
-        SharedPreferences preferences = getSharedPreferences("DataP",MODE_PRIVATE);
-        //habilitar editor para modificar prefencias
-        SharedPreferences.Editor editor = preferences.edit();
-
-        int index = preferences.getInt("index",0);
-        editor.putString("email" + index,email);
-        editor.putString("telefono" + index,telefono);
-        editor.putString("adress" + index,adress);
-
-        editor.putInt("index",index+1);
-        editor.apply();
-        Toast.makeText(this,"Datos guardados",Toast.LENGTH_SHORT).show();
-
-        finish();
-    }
-
 
     //metodo para mostrar los datos personales del usuario
     private void mostrarDatosPersonales(Usuario usuario, TextView cc, TextView nombre, TextView apellido, TextView edad, TextView email, TextView telefono, TextView adress, TextView adress2){
@@ -136,7 +110,7 @@ public class Datos_Personales extends AppCompatActivity {
         adress.setText(usuario.getDireccion());
         adress2.setText(usuario.getDireccionAlternativa());
 
-    }}
+    }
 
      /*
         //aquie en ves de crear un nuevo archivo de preferences, toca traer la informacion del usuario y con un set
@@ -160,3 +134,4 @@ public class Datos_Personales extends AppCompatActivity {
 
 
 
+}
