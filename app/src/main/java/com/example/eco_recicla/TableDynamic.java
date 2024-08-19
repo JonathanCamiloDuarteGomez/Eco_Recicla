@@ -120,8 +120,14 @@ public class TableDynamic {
             getRow(indexRow).setBackgroundColor(context.getResources().getColor(android.R.color.black));
             indexRow++;
         }
+
     }
     public int sizeData() {
         return data.size();
     }
+
+    public int sizeData() {
+        return data.size();
+    }
 }
+

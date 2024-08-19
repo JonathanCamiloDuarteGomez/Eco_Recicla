@@ -105,5 +105,3 @@ public class DetalleFactura extends AppCompatActivity {
         }
 
         return rows;
-    }
-}

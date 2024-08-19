@@ -335,4 +335,3 @@ public class GestionDeReciclajeAgregarObjeto extends AppCompatActivity {
 
 
 }
-

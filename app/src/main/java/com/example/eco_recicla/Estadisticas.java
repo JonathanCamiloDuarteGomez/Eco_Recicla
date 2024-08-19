@@ -31,6 +31,7 @@ public class Estadisticas extends AppCompatActivity {
 
     private TableLayout tablaFactura;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +112,7 @@ public class Estadisticas extends AppCompatActivity {
 
 /*
 tableLayout = findViewById(R.id.myTableLayout);
+
         buttonClear = findViewById(R.id.buttonClear);
         buttonBack = findViewById(R.id.buttonBack);
 
@@ -164,7 +166,9 @@ tableLayout = findViewById(R.id.myTableLayout);
             tableLayout.addView(tableRow);
         }
 
+
         private void clearData() {
+
         SharedPreferences waterPrefs = getSharedPreferences("DataP", MODE_PRIVATE);
 
         SharedPreferences.Editor waterEditor = waterPrefs.edit();
@@ -176,3 +180,4 @@ tableLayout = findViewById(R.id.myTableLayout);
         Toast.makeText(this, "Datos borrados", Toast.LENGTH_SHORT).show();
     }
  */
+
