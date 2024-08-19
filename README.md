@@ -21,7 +21,7 @@ Posteriormente, se llevó a cabo una planificación de sprint y se creó el back
 | <img src="/assets/florLoto.png" width="400"> | <img src="/assets/diagrama de clases.jpeg" width="400"> |
 
 <p>
-<a href="https://www.youtube.com/watch?v=NU3LAAsj8YQ&t=1s" target="_blank">
+<a href="https://youtu.be/gKspavCwZrk" target="_blank">
 <img src="https://img.shields.io/badge/-Youtube-green?style=for-the-badge&color=fbfc40">
 </a>
 </p>
